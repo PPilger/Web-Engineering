@@ -1,0 +1,101 @@
+/* 
+    Document   : register
+    Created on : 07.04.2013, 01:40:57
+    Author     : kletzi
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body {
+	font-family: Arial;
+}
+
+div#header {
+	min-height: 70px;
+	position: relative;
+	width: 100%;
+	background-image: url(../img/header_fill.png);
+}
+
+div#imgHeaderLeft {
+	position: absolute;
+	width: 159px;
+	height: 100%;
+	background-image: url(../img/header_left.png);
+}
+
+div#imgHeaderRight {
+	position: absolute;
+	height: 100%;
+	width: 40px;
+	top: 0;
+	right: 0;
+	background-image: url(../img/header_right.png);
+}
+
+div#menu {
+	min-height: 30px;
+	background-color: darkslategray;
+	border: 1px solid black;
+	text-align: right;
+}
+
+div#menu ul {
+	list-style: none;
+	color: white;
+	padding: 0 0;
+	margin: 6 0;
+}
+
+div#menu ul li {
+	padding: 0 10px;
+	display: inline;
+	border-left: 1px solid white;
+	
+}
+
+div#content {
+	margin-left: 25px;
+}
+
+div#content h1 {
+	color: chartreuse;
+}
+
+div.divText {
+	float: left;
+}
+
+div#overallUnten {
+	clear:left;
+}
+
+div#clearfix {
+	clear: left;
+}
+
+div#info p, div#logindata p {
+	margin: 20px 15px;
+}
+
+div#inptFields {
+	margin-left: 60px;
+	width: 160px;
+}
+
+div#inptFields input {
+	width: 100%;
+}
+
+div#inptFieldsLogin {
+	margin-left: 40px;
+	width: 160px;
+}
+
+div#inptFieldsLogin input {
+	width: 100%;
+}
