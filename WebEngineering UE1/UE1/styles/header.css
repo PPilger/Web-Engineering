@@ -5,6 +5,7 @@ root {
 body {
 	font-family: Arial;
 	background-color: grey;
+	
 }
 
 div#header {
@@ -31,7 +32,7 @@ div#imgHeaderRight {
 }
 
 div#menu {
-	background-color: darkslategray;
+	background-color: #404448;
 	border: 1px solid black;
 	text-align: right;
 }
@@ -67,3 +68,4 @@ div#outerDiv {
 div#frame {
 	border: 1px solid black;
 }
+
