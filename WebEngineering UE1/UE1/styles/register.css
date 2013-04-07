@@ -12,6 +12,7 @@ root {
 
 body {
 	font-family: Arial;
+	background-color: grey;
 }
 
 div#header {
@@ -38,7 +39,6 @@ div#imgHeaderRight {
 }
 
 div#menu {
-	min-height: 30px;
 	background-color: darkslategray;
 	border: 1px solid black;
 	text-align: right;
@@ -48,7 +48,7 @@ div#menu ul {
 	list-style: none;
 	color: white;
 	padding: 0 0;
-	margin: 6 0;
+	margin: 5px 0px;
 }
 
 div#menu ul li {
@@ -84,18 +84,39 @@ div#info p, div#logindata p {
 
 div#inptFields {
 	margin-left: 60px;
-	width: 160px;
+	/* width: 160px; */
 }
 
 div#inptFields input {
-	width: 100%;
+	/* width: 100%; */
 }
 
 div#inptFieldsLogin {
 	margin-left: 40px;
-	width: 160px;
+	/* width: 160px; */
 }
 
 div#inptFieldsLogin input {
-	width: 100%;
+	/* width: 100%; */
+}
+
+span#benutzernameError {
+	color: red;
+}
+
+input:focus {
+	outline-color: chartreuse;
+}
+
+div#outerDiv {
+	margin: 0 auto;
+	margin-top: 20px;
+	border: 1px solid black;
+	width: 83%;
+	background-color: white;
+}
+
+div#coyright {
+	text-align: right;
+	margin-right: 8%;
 }
