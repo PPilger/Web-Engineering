@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
     "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
@@ -42,7 +42,7 @@
 								<div>
 									<label for="inpGeburtstag">Geburtstag</label>
 									<input type="text" id="inpGeburtstag" />
-									<span id="benutzernameError"></span>
+									<span class="error"></span>
 								</div>
 								<div>
 									<label for="selGeschlecht">Geschlecht</label>
@@ -58,19 +58,19 @@
 							<h2>Login Daten</h2>
 							<div id="logindata" class="divText">
 								<div>
-									<label>Benutzername</label>
+									<label for="benutzername">Benutzername</label>
 									<input type="text" id="benutzername" />
-									<span id="benutzernameError"></span>
+									<span class="error"></span>
 								</div>
 								<div>
-									<label>Passwort</label>
+									<label for="passwort">Passwort</label>
 									<input type="password" id="passwort"/>
-									<span id="benutzernameError"></span>
+									<span class="error"></span>
 								</div>
 							</div>
 						</div>
 						<div id="clearfix"></div>
-						<input type="submit" value="Registrieren" id="submitButton" disabled />
+						<p><input type="submit" value="Registrieren" id="submitButton" disabled="disabled" /></p>
 					</form>
 				</div>
 			</div>

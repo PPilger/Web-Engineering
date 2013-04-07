@@ -14,11 +14,11 @@ root {
 div#content {
 	padding-left: 25px;
 	background-color: white;
-	padding: 40px 0 30px 20px;
+	padding: 40px 0 5px 20px;
 }
 
 div#content h1 {
-	color: chartreuse;
+	color: #b4b10a;
 	margin-top: 0;
 }
 
@@ -26,12 +26,12 @@ div.divText {
 	margin: 20px 15px;
 }
 
-span#benutzernameError {
+span.error {
 	color: red;
 }
 
 input:focus {
-	outline-color: chartreuse;
+	outline-color: #b4b10a;
 }
 
 div#outerDiv {
