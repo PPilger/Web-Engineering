@@ -5,6 +5,7 @@
 	<head>
 		<title>Formel 0 - Registrieren</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" type="text/css" href="./styles/header.css" />
 		<link rel="stylesheet" type="text/css" href="./styles/register.css" />
 		<script type="text/javascript" src="./js/jquery.js"></script>
 		<script type="text/javascript" src="./js/register.js"></script>
@@ -18,7 +19,7 @@
 			<div id="menu">
 				<ul>
 					<li>
-						Einloggen
+						<a href="#">Einloggen</a>
 					</li>
 				</ul>
 			</div>
@@ -29,33 +30,42 @@
 					<div id="overallOben">
 						<h2>Pers&ouml;nliche Daten</h2>
 						<div id="info" class="divText">
-							<p><label>Vorname</label></p>
-							<p><label>Nachname</label></p>
-							<p><label>Geburtstag</label></p>
-							<p><label>Geschlecht</label></p>
-						</div>
-						<div id="inptFields" class="divText">
-							<p><input type="text" id="inpVorname" /></p>
-							<p><input type="text" id="inpNachname" /></p>
-							<p><input type="text" id="inpGeburtstag" /><span id="benutzernameError"></span></p>
-							<p>
+							<div>
+								<label for="inpVorname">Vorname</label>
+								<input type="text" id="inpVorname" />
+							</div>
+							<div>
+								<label for="inpNachname">Nachname</label>
+								<input type="text" id="inpNachname" />
+							</div>
+							<div>
+								<label for="inpGeburtstag">Geburtstag</label>
+								<input type="text" id="inpGeburtstag" />
+								<span id="benutzernameError"></span>
+							</div>
+							<div>
+								<label for="selGeschlecht">Geschlecht</label>
 								<select size="1" id="selGeschlecht">
-									<option>Weiblich</option>
-									<option>M&auml;nnlich</option>
+									<option>weiblich</option>
+									<option>m&auml;nnlich</option>
 								</select>
-							</p>
+							</div>
 						</div>
 					</div>
 
 					<div id="overallUnten">
 						<h2>Login Daten</h2>
 						<div id="logindata" class="divText">
-							<p><label>Benutzername</label></p>
-							<p><label>Passwort</label></p>
-						</div>
-						<div id="inptFieldsLogin" class="divText">
-							<p><input type="text" id="benutzername" /><span id="benutzernameError"></span></p>
-							<p><input type="password" id="passwort"/><span id="benutzernameError"></span></p>
+							<div>
+								<label>Benutzername</label>
+								<input type="text" id="benutzername" />
+								<span id="benutzernameError"></span>
+							</div>
+							<div>
+								<label>Passwort</label>
+								<input type="password" id="passwort"/>
+								<span id="benutzernameError"></span>
+							</div>
 						</div>
 					</div>
 					<div id="clearfix"></div>

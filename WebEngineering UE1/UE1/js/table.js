@@ -1,6 +1,10 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
+function rollDice() {
+	var oAuto = $("img#car1");
+	oAuto.fadeOut(1000,function(){
+		$("div#spielfeldStart").append(oAuto);
+		oAuto.fadeIn(1000);
+	});
+	
+	
+	
+}

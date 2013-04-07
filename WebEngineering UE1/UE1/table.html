@@ -5,6 +5,7 @@
 	<head>
 		<title>Formel 0 - Spielfeld</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" type="text/css" href="./styles/header.css" />
 		<link rel="stylesheet" type="text/css" href="./styles/table.css" />
 		<script type="text/javascript" src="./js/jquery.js"></script>
 		<script type="text/javascript" src="./js/table.js"></script>
@@ -18,26 +19,80 @@
 			<div id="menu">
 				<ul>
 					<li>
-						Neues Spiel
+						<a href="#">Neues Spiel</a>
 					<li>
-						Ausloggen
+						<a href="#">Ausloggen</a>
 					</li>
 				</ul>
 			</div>
 			<div id="content">
 				<div id="stats">
 					<h1>Spielinformationen</h1>
-					<div>
-						<p>F&uuml;hrender</p>
-						<p>Runde</p>
-						<p>Zeit</p>
-						<p>W&uuml;rfelergebnis <i>Super C</i></p>
+					<p>
+						<table>
+							<tr>
+								<td>F&uuml;hrender</td>
+								<td>Super C</td>
+							</tr>
+							<tr>
+								<td>Runde</td>
+								<td>1</td>
+							</tr>
+							<tr>
+								<td>Zeit</td>
+								<td>02:30</td>
+							</tr>
+							<tr>
+								<td>W&uuml;rfelergebnis <em>Super C</em></td>
+								<td>3</td>
+							</tr>
+						</table>
+					</p>
+					<h1>Spieler</h1>
+					<p>
+						<table>
+							<tr>
+								<td>Spieler 1</td>
+								<td>Super Mario</td>
+							</tr>
+							<tr>
+								<td>Spieler 2</td>
+								<td>Super C</td>
+							</tr>
+						</table>
+					</p>
+				</div>
+				<div id="spielfeld">
+					<div id="spielfeldStart" title="Start">
+						<span>Feld 1 (Start)</span>
 					</div>
-					<div>
-						
+					<div class="spielfeldStrasse">
+						<span>Feld 2 (Strasse)</span>
 					</div>
+					<div class="spielfeldOil">
+						<span>Feld 3 (&Ouml;L)</span>
+						<img src="img/car1.png" id="car1" alt="Auto 1"></img>
+					</div>
+					<div class="spielfeldStrasse">
+						<span>Feld 4 (Strasse)</span>
+					</div>
+					<div class="spielfeldStrasse">
+						<span>Feld 5 (Strasse)</span>
+						<img src="img/car2.png" id="car2" alt="Auto 2"></img>
+					</div>
+					<div class="spielfeldOil">
+						<span>Feld 6 (Strasse)</span>
+					</div>
+					<div id="spielfeldEnde">
+						<span>Feld 7 (Ziel)</span>
+					</div>					
+				</div>
+				<div id="dice">
+					<h1>Super Mario</h1>
+					<a href="javascript:rollDice();"><img src="img/wuerfel1.png" alt="W&uuml;rfel 1"></img></a>
 				</div>
 			</div>
+			<div id="clearfix"></div>
 		</div>
 		<div id="coyright">
 			<p>&copy; 2013 Formel 0</p>
