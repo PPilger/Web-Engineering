@@ -12,69 +12,71 @@
 	</head>
 	<body>
 		<div id="outerDiv">
-			<div id="header">
-				<div id="imgHeaderLeft"></div>
-				<div id="imgHeaderRight"></div>
-			</div>
-			<div id="menu">
-				<ul>
-					<li>
-						<a href="#">Einloggen</a>
-					</li>
-				</ul>
-			</div>
-			<div id="content">
-				<h1>Registrieren</h1>
-				<p>Bitte f&uuml;llen Sie das unten stehende Formular aus!</p>
-				<form action="" method="post">
-					<div id="overallOben">
-						<h2>Pers&ouml;nliche Daten</h2>
-						<div id="info" class="divText">
-							<div>
-								<label for="inpVorname">Vorname</label>
-								<input type="text" id="inpVorname" />
-							</div>
-							<div>
-								<label for="inpNachname">Nachname</label>
-								<input type="text" id="inpNachname" />
-							</div>
-							<div>
-								<label for="inpGeburtstag">Geburtstag</label>
-								<input type="text" id="inpGeburtstag" />
-								<span id="benutzernameError"></span>
-							</div>
-							<div>
-								<label for="selGeschlecht">Geschlecht</label>
-								<select size="1" id="selGeschlecht">
-									<option>weiblich</option>
-									<option>m&auml;nnlich</option>
-								</select>
+			<div id="frame">
+				<div id="header">
+					<div id="imgHeaderLeft"></div>
+					<div id="imgHeaderRight"></div>
+				</div>
+				<div id="menu">
+					<ul>
+						<li>
+							<a href="#">Einloggen</a>
+						</li>
+					</ul>
+				</div>
+				<div id="content">
+					<h1>Registrieren</h1>
+					<p>Bitte f&uuml;llen Sie das unten stehende Formular aus!</p>
+					<form action="" method="post">
+						<div id="overallOben">
+							<h2>Pers&ouml;nliche Daten</h2>
+							<div id="info" class="divText">
+								<div>
+									<label for="inpVorname">Vorname</label>
+									<input type="text" id="inpVorname" />
+								</div>
+								<div>
+									<label for="inpNachname">Nachname</label>
+									<input type="text" id="inpNachname" />
+								</div>
+								<div>
+									<label for="inpGeburtstag">Geburtstag</label>
+									<input type="text" id="inpGeburtstag" />
+									<span id="benutzernameError"></span>
+								</div>
+								<div>
+									<label for="selGeschlecht">Geschlecht</label>
+									<select size="1" id="selGeschlecht">
+										<option>weiblich</option>
+										<option>m&auml;nnlich</option>
+									</select>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div id="overallUnten">
-						<h2>Login Daten</h2>
-						<div id="logindata" class="divText">
-							<div>
-								<label>Benutzername</label>
-								<input type="text" id="benutzername" />
-								<span id="benutzernameError"></span>
-							</div>
-							<div>
-								<label>Passwort</label>
-								<input type="password" id="passwort"/>
-								<span id="benutzernameError"></span>
+						<div id="overallUnten">
+							<h2>Login Daten</h2>
+							<div id="logindata" class="divText">
+								<div>
+									<label>Benutzername</label>
+									<input type="text" id="benutzername" />
+									<span id="benutzernameError"></span>
+								</div>
+								<div>
+									<label>Passwort</label>
+									<input type="password" id="passwort"/>
+									<span id="benutzernameError"></span>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div id="clearfix"></div>
-					<p><input type="submit" value="Registrieren" id="submitButton" disabled /></p>
-				</form>
+						<div id="clearfix"></div>
+						<input type="submit" value="Registrieren" id="submitButton" disabled />
+					</form>
+				</div>
 			</div>
-		</div>
-		<div id="coyright">
-			<p>&copy; 2013 Formel 0</p>
+			<p id="copyright">
+			&copy; 2013 Formel 0
+			</p>
 		</div>
 	</body>
 </html>

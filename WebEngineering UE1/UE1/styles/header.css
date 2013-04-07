@@ -54,7 +54,16 @@ div#menu ul li a, div#menu ul li a:active {
 	color: white;
 }
 
-div#coyright {
+p#copyright {
 	text-align: right;
-	margin-right: 8%;
+}
+
+div#outerDiv {
+	margin: 0 auto;
+	margin-top: 20px;
+	width: 83%;
+}
+
+div#frame {
+	border: 1px solid black;
 }

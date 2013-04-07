@@ -4,11 +4,7 @@ root {
 
 div#outerDiv {
 	min-width: 700px;
-	margin: 0 auto;
-	margin-top: 20px;
-	border: 1px solid black;
-	width: 83%;
-	background-color: white;
+	max-width: 1000px;
 }
 
 div#content {

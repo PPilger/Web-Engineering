@@ -12,11 +12,14 @@ root {
 
 
 div#content {
-	margin-left: 25px;
+	padding-left: 25px;
+	background-color: white;
+	padding: 40px 0 30px 20px;
 }
 
 div#content h1 {
 	color: chartreuse;
+	margin-top: 0;
 }
 
 div.divText {
@@ -33,11 +36,7 @@ input:focus {
 
 div#outerDiv {
 	min-width: 400px;
-	margin: 0 auto;
-	margin-top: 20px;
-	border: 1px solid black;
-	width: 83%;
-	background-color: white;
+	max-width: 1200px;
 }
 
 div.divText label {
