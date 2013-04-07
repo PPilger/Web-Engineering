@@ -48,3 +48,7 @@ div.divText label {
 div.divText input {
 	width: 160px;
 }
+
+div#info div, div#logindata div {
+	margin: 5px 0px;
+}
