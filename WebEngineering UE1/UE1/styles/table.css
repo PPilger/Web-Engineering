@@ -1,0 +1,81 @@
+root { 
+    display: block;
+}
+
+body {
+	font-family: Arial;
+	background-color: grey;
+}
+
+div#outerDiv {
+	margin: 0 auto;
+	margin-top: 20px;
+	border: 1px solid black;
+	width: 83%;
+	background-color: white;
+}
+
+div#coyright {
+	text-align: right;
+	margin-right: 8%;
+}
+
+div#header {
+	min-height: 70px;
+	position: relative;
+	width: 100%;
+	background-image: url(../img/header_fill.png);
+}
+
+div#imgHeaderLeft {
+	position: absolute;
+	width: 159px;
+	height: 100%;
+	background-image: url(../img/header_left.png);
+}
+
+div#imgHeaderRight {
+	position: absolute;
+	height: 100%;
+	width: 40px;
+	top: 0;
+	right: 0;
+	background-image: url(../img/header_right.png);
+}
+
+div#menu {
+	background-color: darkslategray;
+	border: 1px solid black;
+	text-align: right;
+}
+
+div#menu ul {
+	list-style: none;
+	color: white;
+	padding: 0 0;
+	margin: 5px 0px;
+}
+
+div#menu ul li {
+	padding: 0 10px;
+	display: inline;
+	border-left: 1px solid white;
+	
+}
+
+div#content {
+	min-height: 400px;
+	background-image: url(../img/field_background.png);
+}
+
+div#content h1 {
+	margin-top: 0px;
+}
+
+div#stats {
+	min-height: 300px;
+	width: 300px;
+	background: grey;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+}
