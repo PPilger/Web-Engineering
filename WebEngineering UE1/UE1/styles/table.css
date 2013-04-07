@@ -125,3 +125,7 @@ div#stats div#spieler span.label {
 	width:70px;
 }
  
+div#dice a {
+	text-decoration: none;
+	color: white;
+}
