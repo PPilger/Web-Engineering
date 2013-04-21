@@ -1,19 +1,18 @@
 package beans;
 
-import java.text.DateFormat;
-import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
  * @author Peter
  */
 public class TableBean {
-    private String leader="Julia";
-    private int round = 2;
-    private int time = 100;
-    
-    private Player player1=new Player("Julia");
-    private Player player2 = new Player("Christian");
+
+    private String leader;
+    private int round;
+    private Date startTime = new Date();
+    private Player player1;
+    private Player player2;
 
     public String getLeader() {
         return leader;
@@ -32,9 +31,11 @@ public class TableBean {
     }
 
     public String getTime() {
+        Date currentTime = new Date();
+        int time = (int) ((currentTime.getTime() - startTime.getTime()) / 1000);
         int sec = time % 60;
         int min = time / 60;
-        
+
         return String.format("%02d:%02d", min, sec);
     }
 

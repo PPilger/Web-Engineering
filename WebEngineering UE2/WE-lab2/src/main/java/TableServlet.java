@@ -7,6 +7,7 @@ import beans.Player;
 import beans.TableBean;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.Random;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,6 +23,23 @@ import javax.servlet.http.HttpSession;
 public class TableServlet extends HttpServlet {
 
     private Random random = new Random();
+    
+    private TableBean getTableBean(HttpSession session) {
+        TableBean bean;
+        
+        if (session.getAttribute("info") == null) { 
+            bean = new TableBean();
+            bean.setPlayer1(new Player("Super Mario"));
+            bean.setPlayer2(new Player("Super C"));
+            bean.setRound(1);
+            
+            session.setAttribute("info", bean);
+        } else {
+            bean = (TableBean) session.getAttribute("info");
+        }
+        
+        return bean;
+    }
 
     /**
      * Processes requests for both HTTP
@@ -35,29 +53,38 @@ public class TableServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
-        TableBean bean;
+        TableBean bean = getTableBean(request.getSession(true));
         
-        if (session.isNew()) {
-            bean = new TableBean();
-            bean.setPlayer1(new Player("Super Mario"));
-            bean.setPlayer2(new Player("Super C"));
-            
-            session.setAttribute("info", bean);
-        }
-        
-        bean = (TableBean) session.getAttribute("info");
-        if(bean.getPlayer1().getNextPosition() > bean.getPlayer2().getNextPosition()) {
+        if (bean.getPlayer1().getNextPosition() > bean.getPlayer2().getNextPosition()) {
             bean.setLeader(bean.getPlayer1().getName());
-        } else if(bean.getPlayer1().getNextPosition() < bean.getPlayer2().getNextPosition()) {
+        } else if (bean.getPlayer1().getNextPosition() < bean.getPlayer2().getNextPosition()) {
             bean.setLeader(bean.getPlayer2().getName());
         } else {
             bean.setLeader("mehrere");
         }
-
+        
         RequestDispatcher dispatcher = getServletContext()
                 .getRequestDispatcher("/table.jsp");
         dispatcher.forward(request, response);
+    }
+
+    private void resetPlayer(Player player) {
+        player.setPosition(0);
+        player.setLastResult(0);
+        player.setNextPosition(0);
+    }
+
+    private void movePlayer(Player player) {
+        player.setLastResult(random.nextInt(3) + 1);
+        player.setNextPosition(player.getPosition() + player.getLastResult());
+        
+        if (isOil(player.getNextPosition())) {
+            player.setNextPosition(0);
+        }
+    }
+
+    private boolean isOil(int position) {
+        return position == 2 || position == 5;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -73,27 +100,8 @@ public class TableServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
-
-        if ("true".equals(request.getParameter("newGame"))) {
-            TableBean bean = (TableBean) request.getSession().getAttribute("info");
-            bean.getPlayer1().setPosition(0);
-            bean.getPlayer2().setPosition(0);
-            bean.getPlayer1().setLastResult(0);
-            bean.getPlayer2().setLastResult(0);
-        }
-        if ("true".equals(request.getParameter("rollDice"))) {
-            TableBean bean = (TableBean) session.getAttribute("info");
-
-            rollDice(bean.getPlayer1());
-            rollDice(bean.getPlayer2());
-        }
+        System.out.println("goGet");
         processRequest(request, response);
-    }
-
-    private void rollDice(Player player) {
-        player.setPosition(player.getNextPosition());
-        player.setLastResult(random.nextInt(3) + 1);
     }
 
     /**
@@ -108,7 +116,25 @@ public class TableServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        System.out.println("goPost");
+        TableBean bean = getTableBean(request.getSession(true));
+        
+        bean.getPlayer1().setPosition(bean.getPlayer1().getNextPosition());
+        bean.getPlayer2().setPosition(bean.getPlayer2().getNextPosition());
+        
+        if ("true".equals(request.getParameter("newGame"))) {
+            resetPlayer(bean.getPlayer1());
+            resetPlayer(bean.getPlayer2());
+            bean.setRound(1);
+        }
+        if ("true".equals(request.getParameter("rollDice"))) {
+            movePlayer(bean.getPlayer1());
+            movePlayer(bean.getPlayer2());
+            bean.setRound(bean.getRound()+1);
+            
+        }
+        
+        processRequest(request, response); 
     }
 
     /**

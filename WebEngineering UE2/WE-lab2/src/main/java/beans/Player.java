@@ -13,6 +13,7 @@ public class Player {
     private String name="asdf";
     private int lastResult;
     private int position;
+    private int nextPosition;
     
     public Player(String name) {
         this.name = name;
@@ -43,6 +44,10 @@ public class Player {
     }
     
     public int getNextPosition() {
-        return Math.min(position + lastResult, 6);
+        return nextPosition;
+    }
+
+    public void setNextPosition(int nextPosition) {
+        this.nextPosition = Math.min(nextPosition, 6);
     }
 }

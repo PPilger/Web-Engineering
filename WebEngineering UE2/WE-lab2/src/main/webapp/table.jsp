@@ -19,7 +19,7 @@
                     <h2 class="accessibility">Navigation</h2>
                     <ul title="Navigation">
                         <form method="post">
-                            <li><a id="startNewGame" href="?newGame=true" tabindex="1">Neues Spiel</a></li>
+                            <li><a id="startNewGame" href="Table" tabindex="1">Neues Spiel</a></li>
                             <!--<li><input id="startNewGame" class="menuButton" name="newGame" type="submit" value="Neues Spiel" tabindex="1" /></li>-->
                             <!--<li><input id="startNewGame" class="menuButton" name="newGame" type="submit" value="Neues Spiel" tabindex="1" /></li>-->
                             <li><a href="#" tabindex="2">Ausloggen</a></li>
@@ -76,7 +76,7 @@
                     <div class="player">
                         <h2 class="accessibility">W&uuml;rfelbereich</h2>
                         <span class="accessibility">An der Reihe ist</span><div id="currentPlayerName"><%=info.getPlayer1().getName()%></div>
-                        <a id="dice" href="?rollDice=true" tabindex="4">
+                        <a id="dice" href="Table" tabindex="4">
                             <img id="diceImage" src="img/wuerfel<%=info.getPlayer1().getLastResult()%>.png" alt="W&uuml;rfel mit einer Eins" />	
                         </a>
                     </div>
@@ -89,12 +89,12 @@
 
         <script type="text/javascript">
             //<![CDATA[
-            
+
             // call this function once before starting the animations
             function prepareAnimation() {
                 $("#animationDone").remove();
             }
-            
+
             // call this function once after all animations have finished
             function completeAnimation() {
                 var div = $(document.createElement('div'));
@@ -102,33 +102,68 @@
                 div.addClass('hide');
                 $("body").append(div);
             }
-            
+
             function moveTo(player, position) {
-                if(position <= 0) {
+                if (position <= 0) {
                     player.appendTo("#start_road");
-                } else if(position >= 6){
+                } else if (position >= 6) {
                     player.appendTo("#finish_road");
                 } else {
-                    player.appendTo("#road_"+position);
+                    player.appendTo("#road_" + position);
                 }
             }
-            
-            function animation(player, oldPos, newPos) {
-                if(oldPos == newPos) {
-                    moveTo(player, newPos);
+
+            function animateFromTo(player, oldPos, newPos, callback) {
+                oldPos = Math.min(oldPos, 6);
+                newPos = Math.min(newPos, 6);
+                
+                if (oldPos === newPos) {
+                    moveTo(player, oldPos);
+                    callback();
                 } else {
-                    prepareAnimation();
                     moveTo(player, oldPos);
                     player.fadeOut(700, function() {
                         moveTo(player, newPos);
-                        player.fadeIn(700,completeAnimation);
+                        player.fadeIn(700, callback);
                     });
                 }
             }
+
+            function animation(player, oldPos, lastResult, newPos, callback) {
+                animateFromTo(player, oldPos, oldPos + lastResult, function() {
+                    animateFromTo(player, oldPos + lastResult, newPos, callback);
+                });
+            }
             
-            animation($("#player1"), <%=info.getPlayer1().getPosition()%>, <%=info.getPlayer1().getNextPosition()%>);
-            animation($("#player2"), <%=info.getPlayer2().getPosition()%>, <%=info.getPlayer2().getNextPosition()%>);
+            moveTo($("#player1"), <%=info.getPlayer1().getPosition()%>);
+            moveTo($("#player2"), <%=info.getPlayer2().getPosition()%>);
             
+            prepareAnimation();
+            animation($("#player1"),
+                      <%=info.getPlayer1().getPosition()%>,
+                      <%=info.getPlayer1().getLastResult()%>,
+                      <%=info.getPlayer1().getNextPosition()%>,
+                      function() {
+                animation($("#player2"),
+                          <%=info.getPlayer2().getPosition()%>,
+                          <%=info.getPlayer2().getLastResult()%>,
+                          <%=info.getPlayer2().getNextPosition()%>,
+                          completeAnimation);
+            });
+
+            $("#startNewGame").click(function() {
+                $.post("Table", {newGame: "true"})
+                        .done(function(data) {
+                    $("body").html(data);
+                });
+            });
+
+            $("#dice").click(function() {
+                $.post("Table", {rollDice: "true"})
+                        .done(function(data) {
+                    $("body").html(data);
+                });
+            });
             //]]>
         </script>
 
