@@ -115,7 +115,7 @@ label.registerform {
 
 div.info {
 	float: left;
-	width: 15em;
+	width: 15.5em;
 	height: 100%;
 	background-color: #404448;
 	border-bottom: 1px solid #000000;
@@ -259,4 +259,11 @@ span#player2 {
 	height: 90px;
 	width: 50px;
 	float: right;
+}
+
+input.menuButton {
+    background: none repeat scroll 0% 0% transparent;
+    border: medium none;
+    color: white;
+    padding: 0px;
 }
