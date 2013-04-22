@@ -32,6 +32,7 @@ public class TableServlet extends HttpServlet {
             bean.setPlayer1(new Player("Super Mario"));
             bean.setPlayer2(new Player("Super C"));
             bean.setRound(1);
+            bean.setStartTime(new Date());
             
             session.setAttribute("info", bean);
         } else {
@@ -126,6 +127,7 @@ public class TableServlet extends HttpServlet {
             resetPlayer(bean.getPlayer1());
             resetPlayer(bean.getPlayer2());
             bean.setRound(1);
+            bean.setStartTime(new Date());
         }
         if ("true".equals(request.getParameter("rollDice"))) {
             movePlayer(bean.getPlayer1());

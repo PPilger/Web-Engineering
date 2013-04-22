@@ -18,12 +18,8 @@
                 <div id="navigation">
                     <h2 class="accessibility">Navigation</h2>
                     <ul title="Navigation">
-                        <form method="post">
-                            <li><a id="startNewGame" href="Table" tabindex="1">Neues Spiel</a></li>
-                            <!--<li><input id="startNewGame" class="menuButton" name="newGame" type="submit" value="Neues Spiel" tabindex="1" /></li>-->
-                            <!--<li><input id="startNewGame" class="menuButton" name="newGame" type="submit" value="Neues Spiel" tabindex="1" /></li>-->
-                            <li><a href="#" tabindex="2">Ausloggen</a></li>
-                        </form>
+                        <li><a id="startNewGame" href="Table" tabindex="1">Neues Spiel</a></li>
+                        <li><a href="#" tabindex="2">Ausloggen</a></li>
                     </ul>
                 </div>
                 <div id="main-area">

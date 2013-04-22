@@ -10,7 +10,7 @@ public class TableBean {
 
     private String leader;
     private int round;
-    private Date startTime = new Date();
+    private Date startTime;
     private Player player1;
     private Player player2;
 
@@ -28,6 +28,14 @@ public class TableBean {
 
     public void setRound(int round) {
         this.round = round;
+    }
+    
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+    
+    public Date getStartTime() {
+        return startTime;
     }
 
     public String getTime() {
