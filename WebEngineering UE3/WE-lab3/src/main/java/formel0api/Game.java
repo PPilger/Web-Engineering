@@ -9,10 +9,11 @@
  * </copyright>
  */
 package formel0api;
-
 /**
  * Class representing a Formel 0 game
  */
+@javax.faces.bean.ManagedBean
+@javax.faces.bean.SessionScoped
 public class Game {
 
     private static final int LAST_FIELD = 6;
