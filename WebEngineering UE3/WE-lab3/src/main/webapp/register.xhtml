@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de" 
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <head>
         <title xml:lang="de">Formel 0 - Registrieren</title>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -26,44 +26,46 @@
                     <h2>Registrieren</h2>
                     <p>Bitte f&uuml;llen Sie das unten stehende Formular aus!</p>
 
-					<!--
-						@TODO: Lassen wir outputText so oder wieder zurück auf h3?
-					-->
+                    <!--
+                            @TODO: Lassen wir outputText so oder wieder zurück auf h3?
+                    -->
                     <h:form id="form">
-                        <h:outputText value="Pers&ouml;nliche Daten" />
-							
+                        <h3><h:outputText value="Pers&ouml;nliche Daten" /></h3>
+
                         <h:panelGrid id="gridUserData" columns="2">
                             <h:outputLabel value="Vorname" for="firstname" class="registerform"/>
-                            <h:inputText id="firstname" />
+                            <h:inputText id="firstname" value="#{userBean.user.firstname}">
+                                <f:validator validatorId="nameValidator" />
+                            </h:inputText>
 
                             <h:outputLabel value="Nachname" for="lastname" />
-                            <h:inputText id="lastname" />
+                            <h:inputText id="lastname" value="#{userBean.user.lastname}" />
 
                             <h:outputLabel value="Geburtstag" for="birthday" class="registerform"/>
-                            <h:inputText id="birthday" />
-                            
+                            <h:inputText id="birthday" value="#{userBean.user.birthdate}">
+                                <f:converter converterId="dateConverter"/>
+                            </h:inputText>
 
                             <h:outputLabel value="Geschlecht" for="sex" class="registerform" />
-                            <h:selectOneMenu id="sex">
-								<f:selectItem itemValue="f" itemLabel="weiblich" />
+                            <h:selectOneMenu id="sex" value="#{userBean.user.sex}">
+                                <f:selectItem itemValue="f" itemLabel="weiblich" />
                                 <f:selectItem itemValue="m" itemLabel="m&auml;nnlich" />
                             </h:selectOneMenu>
                         </h:panelGrid>
 
-						
-                        <h:outputText value="Login Daten" />
-						
+                        <h3><h:outputText value="Login Daten" /></h3>
+
                         <h:panelGrid id="gridLoginData" columns="2">
                             <h:outputLabel for="username" class="registerform" value="Benutzername" />
-                            <h:inputText id="username" />
-                            
+                            <h:inputText id="username" value="#{userBean.user.username}"/>
+
                             <h:outputLabel for="password" class="registerform" value="Passwort" />
-                            <h:inputSecret redisplay="false" id="password" />
-                            
-						</h:panelGrid>
-                        <p>
-                            <h:commandButton id="submit" value="Registrieren" action="#" />
-                        </p>
+                            <h:inputSecret redisplay="false" id="password" value="#{userBean.user.password}"/>
+                        </h:panelGrid>
+                        
+                        <h:selectBooleanCheckbox id="showterms"/>
+                        <h:messages/>
+                        <h:commandButton id="submit" value="Registrieren" action="#{bean.save(userBean.user)}" />
                     </h:form>
                 </div>
             </div>
@@ -75,8 +77,8 @@
         <script type="text/javascript">
             //<![CDATA[
             // Only disable the button if javascript is enabled
-			$("#submit").attr('disabled', 'disabled');
-			
+            $("#submit").attr('disabled', 'disabled');
+
             $("#birthday").keyup(function() {
                 if (isBirthdayInvalid()) {
                     $("#birthday").css({'background-color': 'red'});

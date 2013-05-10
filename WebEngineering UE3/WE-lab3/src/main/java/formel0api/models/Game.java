@@ -8,12 +8,17 @@
  *
  * </copyright>
  */
-package formel0api;
+package formel0api.models;
+
+import formel0api.models.Player;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
 /**
  * Class representing a Formel 0 game
  */
-@javax.faces.bean.ManagedBean
-@javax.faces.bean.SessionScoped
+@ManagedBean(name="game")
+@SessionScoped
 public class Game {
 
     private static final int LAST_FIELD = 6;

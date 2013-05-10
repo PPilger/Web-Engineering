@@ -1,10 +1,14 @@
-package formel0api;
+package formel0api.models;
 
 import java.util.Random;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  * Class representing a dice
  */
+@ManagedBean(name="dice")
+@SessionScoped
 public class Dice {
 
     /**

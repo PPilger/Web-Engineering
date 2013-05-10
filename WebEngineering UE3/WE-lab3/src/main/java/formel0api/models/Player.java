@@ -8,14 +8,19 @@
  *
  * </copyright>
  */
-package formel0api;
+package formel0api.models;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  * Class representing a player playing in a {@link Game}.
  */
+@ManagedBean(name="player")
+@SessionScoped
 public class Player {
 
     /**
@@ -26,6 +31,7 @@ public class Player {
      * The name of this user
      */
     private String name;
+    
     /**
      * The current position of the user's car
      */

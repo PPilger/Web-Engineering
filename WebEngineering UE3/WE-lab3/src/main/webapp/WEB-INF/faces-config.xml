@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="2.1"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
+
+    <managed-bean>
+        <managed-bean-name>game</managed-bean-name>
+        <managed-bean-class>formel0api.models.Game</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>userBean</managed-bean-name>
+        <managed-bean-class>formel0api.beans.UserBean</managed-bean-class>
+    
+        <managed-bean-scope>view</managed-bean-scope></managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>bean</managed-bean-name>
+        <managed-bean-class>formel0api.beans.Application</managed-bean-class>
+    
+        <managed-bean-scope>application</managed-bean-scope></managed-bean>
+    
+    <converter>
+        <converter-id>dateConverter</converter-id>
+        <converter-class>formel0api.converter.DateConverter</converter-class>
+    </converter>
+    
+    <validator>
+        <validator-id>nameValidator</validator-id>
+        <validator-class>formel0api.validator.NameValidator</validator-class>
+    </validator>
+</faces-config>
