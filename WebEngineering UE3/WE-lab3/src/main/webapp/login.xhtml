@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de" 
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:mc="http://java.sun.com/jsf/composite/mycomponents">
     <head>
         <title xml:lang="de">Formel 0 - Registrieren</title>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -19,110 +18,16 @@
                 <div id="navigation">
                     <h2 class="accessibility">Navigation</h2>
                     <ul title="Navigation">
-                        <li><a id="backToLogin" href="register.xhtml" tabindex="1">Register</a></li>
+                        <li><a id="register" href="register.xhtml" tabindex="1">Register</a></li>
                     </ul>
                 </div>
                 <div id="content">
-                    <h:form id="form">
-                        <h:panelGrid id="gridUserData" columns="1">
-                            <h:outputLabel value="Name" for="username" class="registerform"/>
-                            <h:inputText id="username" value="#{userBean.user.firstname}" />
-
-                            <h:outputLabel value="Password" for="password" />
-                            <h:inputText id="password" value="#{userBean.user.lastname}" />
-							
-							<h:commandButton id="submit" value="Login" action="#{bean.save(userBean.user)}" />
-                        </h:panelGrid>
-                    </h:form>
+					<mc:loginForm id="login" />
                 </div>
             </div>
             <div id="footer">
                 &copy; 2013 Formel 0
             </div>
         </div>
-
-        <script type="text/javascript">
-            //<![CDATA[
-            // Only disable the button if javascript is enabled
-            $("#submit").attr('disabled', 'disabled');
-
-            $("#birthday").keyup(function() {
-                if (isBirthdayInvalid()) {
-                    $("#birthday").css({'background-color': 'red'});
-                    $("#msg_birthday").removeClass('hide');
-                    $("#submit").attr('disabled', 'disabled');
-                } else {
-                    $("#birthday").css({'background-color': 'white'});
-                    $("#msg_birthday").addClass('hide');
-                    if (areAllFieldsValid()) {
-                        $("#submit").removeAttr('disabled');
-                    }
-                }
-            });
-
-            $("#username").keyup(function() {
-                if (isUsernameInvalid()) {
-                    $("#username").css({'background-color': 'red'});
-                    $("#msg_username").removeClass('hide');
-                    $("#submit").attr('disabled', 'disabled');
-                } else {
-                    $("#username").css({'background-color': 'white'});
-                    $("#msg_username").addClass('hide');
-                    if (areAllFieldsValid()) {
-                        $("#submit").removeAttr('disabled');
-                    }
-                }
-            });
-
-            $("#password").keyup(function() {
-                if (isPasswordInvalid()) {
-                    $("#password").css({'background-color': 'red'});
-                    $("#msg_password").removeClass('hide');
-                    $("#submit").attr('disabled', 'disabled');
-                } else {
-                    $("#password").css({'background-color': 'white'});
-                    $("#msg_password").addClass('hide');
-                    if (areAllFieldsValid()) {
-                        $("#submit").removeAttr('disabled');
-                    }
-                }
-            });
-
-            function areAllFieldsValid() {
-                return !(isUsernameInvalid() || isPasswordInvalid() || isBirthdayInvalid());
-            }
-
-            function isBirthdayInvalid() {
-                re = /^(\d{1,2})\.(\d{1,2})\.(\d{4})$/;
-                if ($("#birthday").val() != '') {
-                    if (regs = $("#birthday").val().match(re)) {
-                        if (regs[1] < 1 || regs[1] > 31) {
-                            return true;
-                        }
-                        if (regs[2] < 1 || regs[2] > 12) {
-                            return true;
-                        }
-                        if (regs[3] < 1902 || regs[3] > (new Date()).getFullYear() + 100) {
-                            return true;
-                        }
-                        return false;
-                    } else {
-                        return true;
-                    }
-                } else {
-                    return false;
-                }
-            }
-
-            function isPasswordInvalid() {
-                return $("#password").val().length < 4 || $("#password").val().length > 8;
-            }
-
-            function isUsernameInvalid() {
-                return $("#username").val().length < 4 || $("#username").val().length > 8;
-            }
-            //]]>
-        </script>
-
     </body>
 </html>
