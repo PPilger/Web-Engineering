@@ -19,7 +19,7 @@
                 <div id="navigation">
                     <h2 class="accessibility">Navigation</h2>
                     <ul title="Navigation">
-                        <li><a id="backToLogin" href="#" tabindex="1">Einloggen</a></li>
+                        <li><a id="backToLogin" href="login.xhtml" tabindex="1">Einloggen</a></li>
                     </ul>
                 </div>
                 <div id="content">
@@ -34,6 +34,7 @@
                             <h:inputText id="firstname" value="#{userBean.user.firstname}">
                                 <f:validator validatorId="nameValidator" />
                             </h:inputText>
+							
 							<h:message for="firstname"/>
 
                             <h:outputLabel value="Nachname" for="lastname" />
