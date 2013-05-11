@@ -25,7 +25,7 @@ import javax.faces.validator.ValidatorException;
  *
  * @author Peter
  */
-public class NameValidator implements Validator {
+public class PasswordValidator implements Validator {
 
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
         String str = (String) value;
@@ -33,8 +33,8 @@ public class NameValidator implements Validator {
 		 * Nur Buchstaben im Text (ohne Leerzeichen) UND 
 		 * am Anfang duerfen auch keine Leerzeichen stehen!
 		 */
-		if(!str.matches("^[a-zA-Z][^-\\s]*")){
-			throw new ValidatorException(new FacesMessage("Die Eingabe darf nur Buchstaben enthalten!"));
+		if(!str.matches("((\\d+)|([a-zA-z]+)){2,}")){
+			throw new ValidatorException(new FacesMessage("Die Eingabe muss mind. 1 Buchstaben und mind. 1 Zahl haben!"));
 		}
     }
     

@@ -26,25 +26,27 @@
                     <h2>Registrieren</h2>
                     <p>Bitte f&uuml;llen Sie das unten stehende Formular aus!</p>
 
-                    <!--
-                            @TODO: Lassen wir outputText so oder wieder zurück auf h3?
-                    -->
                     <h:form id="form">
                         <h3><h:outputText value="Pers&ouml;nliche Daten" /></h3>
 
-                        <h:panelGrid id="gridUserData" columns="2">
+                        <h:panelGrid id="gridUserData" columns="3">
                             <h:outputLabel value="Vorname" for="firstname" class="registerform"/>
                             <h:inputText id="firstname" value="#{userBean.user.firstname}">
                                 <f:validator validatorId="nameValidator" />
                             </h:inputText>
+							<h:message for="firstname"/>
 
                             <h:outputLabel value="Nachname" for="lastname" />
-                            <h:inputText id="lastname" value="#{userBean.user.lastname}" />
+                            <h:inputText id="lastname" value="#{userBean.user.lastname}" >
+								<f:validator validatorId="nameValidator" />
+							</h:inputText>
+							<h:message for="lastname"/>
 
                             <h:outputLabel value="Geburtstag" for="birthday" class="registerform"/>
                             <h:inputText id="birthday" value="#{userBean.user.birthdate}">
                                 <f:converter converterId="dateConverter"/>
                             </h:inputText>
+							<h:message for="birthday"/>
 
                             <h:outputLabel value="Geschlecht" for="sex" class="registerform" />
                             <h:selectOneMenu id="sex" value="#{userBean.user.sex}">
@@ -55,13 +57,19 @@
 
                         <h3><h:outputText value="Login Daten" /></h3>
 
-                        <h:panelGrid id="gridLoginData" columns="2">
+                        <h:panelGrid id="gridLoginData" columns="3">
                             <h:outputLabel for="username" class="registerform" value="Benutzername" />
-                            <h:inputText id="username" value="#{userBean.user.username}"/>
+                            <h:inputText id="username" value="#{userBean.user.username}">
+								<f:validator validatorId="nameValidator" />
+							</h:inputText>
+							<h:message for="username"/>
 
                             <h:outputLabel for="password" class="registerform" value="Passwort" />
-                            <h:inputSecret redisplay="false" id="password" value="#{userBean.user.password}"/>
-                        </h:panelGrid>
+                            <h:inputSecret redisplay="false" id="password" value="#{userBean.user.password}">
+								<f:validator validatorId="passwordValidator" />
+							</h:inputSecret>
+							<h:message for="password"/>
+						</h:panelGrid>
                         
                         <h:selectBooleanCheckbox id="showterms"/>
                         <h:messages/>

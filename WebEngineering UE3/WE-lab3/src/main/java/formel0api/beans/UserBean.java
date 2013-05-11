@@ -17,6 +17,7 @@ package formel0api.beans;
 
 import formel0api.models.User;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 /**
@@ -24,7 +25,7 @@ import javax.faces.bean.ViewScoped;
  * @author Peter
  */
 @ManagedBean(name="userBean")
-@ViewScoped
+@SessionScoped
 public class UserBean {
     private User user = new User();
 

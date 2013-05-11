@@ -34,4 +34,9 @@
         <validator-id>nameValidator</validator-id>
         <validator-class>formel0api.validator.NameValidator</validator-class>
     </validator>
+	
+	<validator>
+        <validator-id>passwordValidator</validator-id>
+        <validator-class>formel0api.validator.PasswordValidator</validator-class>
+    </validator>
 </faces-config>
