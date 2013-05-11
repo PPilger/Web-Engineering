@@ -12,9 +12,9 @@
         <default-locale>de</default-locale>
         <supported-locale>en</supported-locale>
       </locale-config>
-	  <message-bundle>/src/main/ressources/i18n</message-bundle>
+	  <message-bundle>/src/main/resources/i18n</message-bundle>
       <resource-bundle>
-        <base-name>/src/main/ressources/i18n</base-name>
+        <base-name>/src/main/resources/i18n</base-name>
         <var>msg</var>
       </resource-bundle>
     </application>
