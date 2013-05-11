@@ -2,85 +2,72 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de" 
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-    <head>
-        <title xml:lang="de">Formel 0 - Registrieren</title>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" type="text/css" href="resources/styles/screen.css" />
-        <script src="js/jquery.js" type="text/javascript"></script>
-    </head>
-    <body>
-        <div id="container">
-            <div id="bordercontainer">
-                <div id="header">
-                    <div id="header_left"><h1 class="accessibility">Formel 0</h1></div>
-                    <div id="header_right"></div>
-                </div>
-                <div id="navigation">
-                    <h2 class="accessibility">Navigation</h2>
-                    <ul title="Navigation">
-                        <li><a id="backToLogin" href="login.xhtml" tabindex="1">Einloggen</a></li>
-                    </ul>
-                </div>
-                <div id="content">
-                    <h2>Registrieren</h2>
-                    <p>Bitte f&uuml;llen Sie das unten stehende Formular aus!</p>
+      xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:body>
+		<ui:composition template="main.xhtml">
+			<ui:define name="content">
+				
+				<div id="content">
+					<h2>Registrieren</h2>
+					<p>Bitte f&uuml;llen Sie das unten stehende Formular aus!</p>
 
-                    <h:form id="form">
-                        <h3><h:outputText value="Pers&ouml;nliche Daten" /></h3>
+					<h:form id="form">
+						<h3><h:outputText value="Pers&ouml;nliche Daten" /></h3>
 
-                        <h:panelGrid id="gridUserData" columns="3">
-                            <h:outputLabel value="Vorname" for="firstname" class="registerform"/>
-                            <h:inputText id="firstname" value="#{userBean.user.firstname}">
-                                <f:validator validatorId="nameValidator" />
-                            </h:inputText>
-							
+						<h:panelGrid id="gridUserData" columns="3">
+							<h:outputLabel value="Vorname" for="firstname" class="registerform"/>
+							<h:inputText id="firstname" value="#{userBean.user.firstname}">
+								<f:validator validatorId="nameValidator" />
+							</h:inputText>
+
 							<h:message for="firstname"/>
 
-                            <h:outputLabel value="Nachname" for="lastname" />
-                            <h:inputText id="lastname" value="#{userBean.user.lastname}" >
+							<h:outputLabel value="Nachname" for="lastname" />
+							<h:inputText id="lastname" value="#{userBean.user.lastname}" >
 								<f:validator validatorId="nameValidator" />
 							</h:inputText>
 							<h:message for="lastname"/>
 
-                            <h:outputLabel value="Geburtstag" for="birthday" class="registerform"/>
-                            <h:inputText id="birthday" value="#{userBean.user.birthdate}">
-                                <f:converter converterId="dateConverter"/>
-                            </h:inputText>
+							<h:outputLabel value="Geburtstag" for="birthday" class="registerform"/>
+							<h:inputText id="birthday" value="#{userBean.user.birthdate}">
+								<f:converter converterId="dateConverter"/>
+							</h:inputText>
 							<h:message for="birthday"/>
 
-                            <h:outputLabel value="Geschlecht" for="sex" class="registerform" />
-                            <h:selectOneMenu id="sex" value="#{userBean.user.sex}">
-                                <f:selectItem itemValue="f" itemLabel="weiblich" />
-                                <f:selectItem itemValue="m" itemLabel="m&auml;nnlich" />
-                            </h:selectOneMenu>
-                        </h:panelGrid>
+							<h:outputLabel value="Geschlecht" for="sex" class="registerform" />
+							<h:selectOneMenu id="sex" value="#{userBean.user.sex}">
+								<f:selectItem itemValue="f" itemLabel="weiblich" />
+								<f:selectItem itemValue="m" itemLabel="m&auml;nnlich" />
+							</h:selectOneMenu>
+						</h:panelGrid>
 
-                        <h3><h:outputText value="Login Daten" /></h3>
+						<h3><h:outputText value="Login Daten" /></h3>
 
-                        <h:panelGrid id="gridLoginData" columns="3">
-                            <h:outputLabel for="username" class="registerform" value="Benutzername" />
-                            <h:inputText id="username" value="#{userBean.user.username}">
+						<h:panelGrid id="gridLoginData" columns="3">
+							<h:outputLabel for="username" class="registerform" value="Benutzername" />
+							<h:inputText id="username" value="#{userBean.user.username}">
 								<f:validator validatorId="nameValidator" />
 							</h:inputText>
 							<h:message for="username"/>
 
-                            <h:outputLabel for="password" class="registerform" value="Passwort" />
-                            <h:inputSecret redisplay="false" id="password" value="#{userBean.user.password}">
+							<h:outputLabel for="password" class="registerform" value="Passwort" />
+							<h:inputSecret redisplay="false" id="password" value="#{userBean.user.password}">
 								<f:validator validatorId="passwordValidator" />
 							</h:inputSecret>
 							<h:message for="password"/>
 						</h:panelGrid>
-                        
-                        <h:selectBooleanCheckbox id="showterms"/>
-                        <h:messages/>
-                        <h:commandButton id="submit" value="Registrieren" action="#{bean.save(userBean.user)}" />
-                    </h:form>
-                </div>
-            </div>
-            <div id="footer">
-                &copy; 2013 Formel 0
-            </div>
-        </div>
-    </body>
+
+						<h:selectBooleanCheckbox id="showterms" value="#{ctrl.showterms}" immediate="true">
+							<f:ajax render="termsText" />
+						</h:selectBooleanCheckbox>
+						<h:outputText id="termsText" value="#{msg.showTerms}" rendered="#{ctrl.showterms}" />
+						<h:messages/>
+						<h:commandButton id="submit" value="Registrieren" action="#{bean.save(userBean.user)}" />
+					</h:form>
+				</div>
+					
+			</ui:define>
+		</ui:composition>
+    </h:body>
 </html>

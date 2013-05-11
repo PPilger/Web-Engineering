@@ -6,7 +6,19 @@
     xmlns="http://java.sun.com/xml/ns/javaee"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
-
+ 
+	<application>
+      <locale-config>
+        <default-locale>de</default-locale>
+        <supported-locale>en</supported-locale>
+      </locale-config>
+	  <message-bundle>/src/main/ressources/i18n</message-bundle>
+      <resource-bundle>
+        <base-name>/src/main/ressources/i18n</base-name>
+        <var>msg</var>
+      </resource-bundle>
+    </application>
+	
     <managed-bean>
         <managed-bean-name>game</managed-bean-name>
         <managed-bean-class>formel0api.models.Game</managed-bean-class>
