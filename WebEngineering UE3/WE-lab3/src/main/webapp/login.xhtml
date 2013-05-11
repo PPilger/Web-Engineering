@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <title xml:lang="de">Formel 0 - Registrieren</title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="resources/styles/screen.css" />
+        <script src="js/jquery.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="container">
+            <div id="bordercontainer">
+                <div id="header">
+                    <div id="header_left"><h1 class="accessibility">Formel 0</h1></div>
+                    <div id="header_right"></div>
+                </div>
+                <div id="navigation">
+                    <h2 class="accessibility">Navigation</h2>
+                    <ul title="Navigation">
+                        <li><a id="backToLogin" href="#" tabindex="1">Einloggen</a></li>
+                    </ul>
+                </div>
+                <div id="content">
+                    <h2>Registrieren</h2>
+                    <p>Bitte f&uuml;llen Sie das unten stehende Formular aus!</p>
+
+                    <h:form id="form">
+                        <h3><h:outputText value="Pers&ouml;nliche Daten" /></h3>
+
+                        <h:panelGrid id="gridUserData" columns="3">
+                            <h:outputLabel value="Vorname" for="firstname" class="registerform"/>
+                            <h:inputText id="firstname" value="#{userBean.user.firstname}">
+                                <f:validator validatorId="nameValidator" />
+                            </h:inputText>
+							<h:message for="firstname"/>
+
+                            <h:outputLabel value="Nachname" for="lastname" />
+                            <h:inputText id="lastname" value="#{userBean.user.lastname}" >
+								<f:validator validatorId="nameValidator" />
+							</h:inputText>
+							<h:message for="lastname"/>
+
+                            <h:outputLabel value="Geburtstag" for="birthday" class="registerform"/>
+                            <h:inputText id="birthday" value="#{userBean.user.birthdate}">
+                                <f:converter converterId="dateConverter"/>
+                            </h:inputText>
+							<h:message for="birthday"/>
+
+                            <h:outputLabel value="Geschlecht" for="sex" class="registerform" />
+                            <h:selectOneMenu id="sex" value="#{userBean.user.sex}">
+                                <f:selectItem itemValue="f" itemLabel="weiblich" />
+                                <f:selectItem itemValue="m" itemLabel="m&auml;nnlich" />
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+
+                        <h3><h:outputText value="Login Daten" /></h3>
+
+                        <h:panelGrid id="gridLoginData" columns="3">
+                            <h:outputLabel for="username" class="registerform" value="Benutzername" />
+                            <h:inputText id="username" value="#{userBean.user.username}">
+								<f:validator validatorId="nameValidator" />
+							</h:inputText>
+							<h:message for="username"/>
+
+                            <h:outputLabel for="password" class="registerform" value="Passwort" />
+                            <h:inputSecret redisplay="false" id="password" value="#{userBean.user.password}">
+								<f:validator validatorId="passwordValidator" />
+							</h:inputSecret>
+							<h:message for="password"/>
+						</h:panelGrid>
+                        
+                        <h:selectBooleanCheckbox id="showterms"/>
+                        <h:messages/>
+                        <h:commandButton id="submit" value="Registrieren" action="#{bean.save(userBean.user)}" />
+                    </h:form>
+                </div>
+            </div>
+            <div id="footer">
+                &copy; 2013 Formel 0
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            // Only disable the button if javascript is enabled
+            $("#submit").attr('disabled', 'disabled');
+
+            $("#birthday").keyup(function() {
+                if (isBirthdayInvalid()) {
+                    $("#birthday").css({'background-color': 'red'});
+                    $("#msg_birthday").removeClass('hide');
+                    $("#submit").attr('disabled', 'disabled');
+                } else {
+                    $("#birthday").css({'background-color': 'white'});
+                    $("#msg_birthday").addClass('hide');
+                    if (areAllFieldsValid()) {
+                        $("#submit").removeAttr('disabled');
+                    }
+                }
+            });
+
+            $("#username").keyup(function() {
+                if (isUsernameInvalid()) {
+                    $("#username").css({'background-color': 'red'});
+                    $("#msg_username").removeClass('hide');
+                    $("#submit").attr('disabled', 'disabled');
+                } else {
+                    $("#username").css({'background-color': 'white'});
+                    $("#msg_username").addClass('hide');
+                    if (areAllFieldsValid()) {
+                        $("#submit").removeAttr('disabled');
+                    }
+                }
+            });
+
+            $("#password").keyup(function() {
+                if (isPasswordInvalid()) {
+                    $("#password").css({'background-color': 'red'});
+                    $("#msg_password").removeClass('hide');
+                    $("#submit").attr('disabled', 'disabled');
+                } else {
+                    $("#password").css({'background-color': 'white'});
+                    $("#msg_password").addClass('hide');
+                    if (areAllFieldsValid()) {
+                        $("#submit").removeAttr('disabled');
+                    }
+                }
+            });
+
+            function areAllFieldsValid() {
+                return !(isUsernameInvalid() || isPasswordInvalid() || isBirthdayInvalid());
+            }
+
+            function isBirthdayInvalid() {
+                re = /^(\d{1,2})\.(\d{1,2})\.(\d{4})$/;
+                if ($("#birthday").val() != '') {
+                    if (regs = $("#birthday").val().match(re)) {
+                        if (regs[1] < 1 || regs[1] > 31) {
+                            return true;
+                        }
+                        if (regs[2] < 1 || regs[2] > 12) {
+                            return true;
+                        }
+                        if (regs[3] < 1902 || regs[3] > (new Date()).getFullYear() + 100) {
+                            return true;
+                        }
+                        return false;
+                    } else {
+                        return true;
+                    }
+                } else {
+                    return false;
+                }
+            }
+
+            function isPasswordInvalid() {
+                return $("#password").val().length < 4 || $("#password").val().length > 8;
+            }
+
+            function isUsernameInvalid() {
+                return $("#username").val().length < 4 || $("#username").val().length > 8;
+            }
+            //]]>
+        </script>
+
+    </body>
+</html>
