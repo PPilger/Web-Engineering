@@ -15,6 +15,8 @@
  */
 package formel0api.validator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -27,14 +29,18 @@ import javax.faces.validator.ValidatorException;
  */
 public class PasswordValidator implements Validator {
 
+	private static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-zA-Z]).{2,})";
+	
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
         String str = (String) value;
 		/*
-		 * Nur Buchstaben im Text (ohne Leerzeichen) UND 
-		 * am Anfang duerfen auch keine Leerzeichen stehen!
+		 * Hier MUSS die Pattern Klasse verwendet werden wegen ?=
 		 */
-		if(!str.matches("((\\d+)|([a-zA-z]+)){2,}")){
-			throw new ValidatorException(new FacesMessage("Die Eingabe muss mind. 1 Buchstaben und mind. 1 Zahl haben!"));
+		Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+		Matcher matcher = pattern.matcher(str);
+		
+		if(!matcher.matches()){
+			throw new ValidatorException(new FacesMessage("Die Eingabe muss aus mind. 1 Buchstaben und mind. 1 Zahl bestehen!"));
 		}
     }
     

@@ -25,7 +25,7 @@ import javax.faces.bean.ViewScoped;
  * @author Peter
  */
 @ManagedBean(name="userBean")
-@SessionScoped
+@ViewScoped
 public class UserBean {
     private User user = new User();
 
