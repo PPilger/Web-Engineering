@@ -19,19 +19,12 @@
         </resource-bundle>
     </application>
     
-    <converter>
-        <converter-id>dateConverter</converter-id>
-        <converter-class>formel0api.converter.DateConverter</converter-class>
-    </converter>
-    
-    <validator>
-        <validator-id>nameValidator</validator-id>
-        <validator-class>formel0api.validator.NameValidator</validator-class>
-    </validator>
-	
-    <validator>
-        <validator-id>passwordValidator</validator-id>
-        <validator-class>formel0api.validator.PasswordValidator</validator-class>
-    </validator>
+    <navigation-rule>
+        <from-view-id>/table.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     
 </faces-config>

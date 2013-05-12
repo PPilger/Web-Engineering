@@ -18,6 +18,7 @@ package formel0api.beans;
 import formel0api.model.*;
 import java.io.Serializable;
 import java.util.Random;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -42,6 +43,15 @@ public class GameBean implements Serializable {
     public void setLoginBean(LoginBean loginBean) {
         System.out.println("setLoginBean " + System.currentTimeMillis());
         this.loginBean = loginBean;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    @PostConstruct
+    public void init() {
+        System.out.println("init " + System.currentTimeMillis());
         User user = loginBean.getUser();
         if (user == null) {
             game.setPlayer1(new Player("Super Mario"));
@@ -53,8 +63,12 @@ public class GameBean implements Serializable {
         refresh();
     }
 
-    public Game getGame() {
-        return game;
+    public String logout() {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        if (fc.getExternalContext().getSessionMap().containsKey("gameBean")) {
+            fc.getExternalContext().getSessionMap().remove("gameBean");
+        }
+        return loginBean.logout();
     }
 
     private void refresh() {
@@ -110,6 +124,7 @@ public class GameBean implements Serializable {
 
             movePlayer(game.getPlayer1());
             movePlayer(game.getPlayer2());
+            game.setSpentTime(System.currentTimeMillis() - startTime);
             game.setRound(game.getRound() + 1);
 
             refresh();

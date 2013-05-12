@@ -12,10 +12,10 @@
             <ui:define name="navigation">
                 <h:form id="navForm">
                     <ul>
-                        <li><h:commandLink id="startNewGame" onclick="#{gameBean.newGame()}" tabindex="1" value="Neues Spiel">
-                                <f:ajax event="click" />
+                        <li><h:commandLink id="startNewGame" onclick="test()" tabindex="1" value="Neues Spiel">
+                                <f:ajax event="click" listener="#{gameBean.newGame()}" />
                             </h:commandLink></li>
-                        <li><h:commandLink id="logout" action="login.xhtml" tabindex="2" value="Ausloggen" /></li>
+                        <li><h:commandLink id="logout" action="logout" tabindex="2" value="Ausloggen" /></li>
                     </ul>
                 </h:form>
             </ui:define>
@@ -100,6 +100,7 @@
                 </div>
             </ui:define>
         </ui:composition>
+        
         <script type="text/javascript">
             //<![CDATA[
             function test() {
@@ -140,6 +141,7 @@
 
             function onRollDice(data) {
                 var status = data.status;
+                alert("onRollDice");
 
                 switch (status) {
                     case 'begin': // On before the ajax request is sent.

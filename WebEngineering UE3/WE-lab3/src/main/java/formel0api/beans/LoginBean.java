@@ -67,4 +67,8 @@ public class LoginBean implements Serializable {
         }
         return "table.xhtml";
     }
+    
+    public String logout() {
+        return "logout";
+    }
 }
