@@ -29,7 +29,7 @@ import javax.faces.convert.FacesConverter;
  *
  * @author Peter
  */
-@FacesConverter(value = "dateConverter")
+@FacesConverter(forClass=Date.class)
 public class DateConverter implements Converter {
 
     private DateFormat format = DateFormat.getDateInstance(DateFormat.MEDIUM);

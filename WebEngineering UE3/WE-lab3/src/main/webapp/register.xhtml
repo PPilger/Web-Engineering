@@ -38,9 +38,7 @@
                             <h:message id="lastname_messages" for="lastname"/>
 
                             <h:outputLabel value="Geburtstag" for="birthday" class="registerform"/>
-                            <h:inputText id="birthday" value="#{userBean.user.birthdate}">
-                                <f:converter converterId="dateConverter"/>
-                            </h:inputText>
+                            <h:inputText id="birthday" value="#{userBean.user.birthdate}" />
                             <h:message id="birthday_messages" for="birthday"/>
 
                             <h:outputLabel value="Geschlecht" for="sex" class="registerform" />
