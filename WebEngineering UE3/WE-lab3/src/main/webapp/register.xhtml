@@ -10,11 +10,9 @@
                 <title>#{msg.registerTitle}</title>
             </ui:define>
             <ui:define name="navigation">
-                <h:form id="navForm">
-                    <ul>
-                        <li><h:link id="backToLogin" outcome="index.xhtml" tabindex="1">#{msg.registerLogin}</h:link></li>
-                    </ul>
-                </h:form>
+                <ul>
+                    <li><h:link id="backToLogin" outcome="index.xhtml" tabindex="1">#{msg.registerLogin}</h:link></li>
+                </ul>
             </ui:define>
             <ui:define name="content">
                 <div id="content">
@@ -81,17 +79,18 @@
 
                         <fieldset>
                             <div>
-                                <h:selectBooleanCheckbox id="showterms" value="#{userBean.showTerms}" onclick="form.submit()" immediate="true">
+                                <h:selectBooleanCheckbox id="showterms" value="#{userBean.showTerms}" onclick="form.submit()">
                                     <f:ajax render="termsText" execute="@this" event="click" immediate="true"/>
                                 </h:selectBooleanCheckbox>
                                 <h:outputLabel for="showterms" value="#{msg.registerShowTerms}" />
-                                <h:outputText id="termsText" value="#{msg.registerTermsText}" rendered="#{userBean.showTerms}"/>
                             </div>
-                        </fieldset>
 
+                            <h:outputText id="termsText" value="#{msg.registerTermsText}" rendered="#{userBean.showTerms}"/>
+                        </fieldset>
+                        
                         <p>
                             <h:commandButton id="submit" value="#{msg.register}" action="#{applicationBean.save(userBean.user)}">
-                                <f:ajax render="successMessage @form" execute="@form"/>
+                                <f:ajax render="@form" execute="@form"/>
                             </h:commandButton>
                         </p>
 
