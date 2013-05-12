@@ -277,7 +277,7 @@ span#player2 {
     float: right;
 }
 
-#firstname_messages, #lastname_messages, #birthday_messages, #sex_messages {
+#form\:firstname_messages, #form\:lastname_messages, #form\:birthday_messages, #form\:sex_messages {
     display: inline;
     color: red;
 }

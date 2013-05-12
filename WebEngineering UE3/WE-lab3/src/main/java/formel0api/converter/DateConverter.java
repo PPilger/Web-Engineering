@@ -35,7 +35,6 @@ public class DateConverter implements Converter {
     private DateFormat format = DateFormat.getDateInstance(DateFormat.MEDIUM);
 
     public Object getAsObject(FacesContext context, UIComponent component, String value) throws ConverterException {
-        System.out.println("getAsObject");
         try {
             return format.parse(value);
         } catch (ParseException ex) {
@@ -44,7 +43,6 @@ public class DateConverter implements Converter {
     }
 
     public String getAsString(FacesContext context, UIComponent component, Object value) throws ConverterException {
-        System.out.println("getAsString");
         if(value == null) {
             return "";
         }

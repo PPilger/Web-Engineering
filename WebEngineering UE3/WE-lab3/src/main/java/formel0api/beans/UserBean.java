@@ -41,12 +41,11 @@ public class UserBean implements Serializable {
     }
 
     public boolean isShowTerms() {
-        System.out.println("isShowTerms");
         return showTerms;
     }
 
     public void setShowTerms(boolean showTerms) {
-        System.out.println("setShowTerms");
+        System.out.println("setShowTerms"+System.currentTimeMillis());
         this.showTerms = showTerms;
     }
 }
