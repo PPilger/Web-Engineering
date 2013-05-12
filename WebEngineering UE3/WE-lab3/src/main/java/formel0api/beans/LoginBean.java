@@ -15,21 +15,40 @@
  */
 package formel0api.beans;
 
+import formel0api.model.Login;
 import formel0api.model.User;
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
  * @author Peter
  */
-@ManagedBean(name = "userBean")
+@ManagedBean(name = "loginBean")
 @SessionScoped
-public class UserBean implements Serializable {
+public class LoginBean implements Serializable {
 
-    private User user = new User();
+    private Login login = new Login();
+    private User user;
+    
+    @ManagedProperty(value = "#{applicationBean}")
+    private ApplicationBean bean;
+
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
+
+    public void setBean(ApplicationBean bean) {
+        this.bean = bean;
+    }
 
     public User getUser() {
         return user;
@@ -39,10 +58,13 @@ public class UserBean implements Serializable {
         this.user = user;
     }
 
-    public String getSuccessMessage() {
-        if (user.isRegistered()) {
-            return "Registrierung erfolgreich!";
+    public String login() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        user = bean.login(login);
+        if(user == null) {
+            context.addMessage("login:form:submit", new FacesMessage("Ungültiger Benutzername oder Passwort!"));
+            return "#";
         }
-        return "";
+        return "table.xhtml";
     }
 }

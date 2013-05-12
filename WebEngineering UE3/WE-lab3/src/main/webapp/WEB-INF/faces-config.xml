@@ -3,39 +3,21 @@
 <!-- =========== FULL CONFIGURATION FILE ================================== -->
 
 <faces-config version="2.1"
-    xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
+              xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
  
-	<application>
-      <locale-config>
-        <default-locale>de</default-locale>
-        <supported-locale>en</supported-locale>
-      </locale-config>
-	  <message-bundle>/src/main/resources/i18n</message-bundle>
-      <resource-bundle>
-        <base-name>/src/main/resources/i18n</base-name>
-        <var>msg</var>
-      </resource-bundle>
+    <application>
+        <locale-config>
+            <default-locale>de</default-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+        <message-bundle>i18n</message-bundle>
+        <resource-bundle>
+            <base-name>i18n</base-name>
+            <var>msg</var>
+        </resource-bundle>
     </application>
-	
-    <managed-bean>
-        <managed-bean-name>game</managed-bean-name>
-        <managed-bean-class>formel0api.models.Game</managed-bean-class>
-    
-        <managed-bean-scope>session</managed-bean-scope></managed-bean>
-    
-    <managed-bean>
-        <managed-bean-name>userBean</managed-bean-name>
-        <managed-bean-class>formel0api.beans.UserBean</managed-bean-class>
-    
-        <managed-bean-scope>view</managed-bean-scope></managed-bean>
-    
-    <managed-bean>
-        <managed-bean-name>bean</managed-bean-name>
-        <managed-bean-class>formel0api.beans.Application</managed-bean-class>
-    
-        <managed-bean-scope>application</managed-bean-scope></managed-bean>
     
     <converter>
         <converter-id>dateConverter</converter-id>
@@ -47,8 +29,9 @@
         <validator-class>formel0api.validator.NameValidator</validator-class>
     </validator>
 	
-	<validator>
+    <validator>
         <validator-id>passwordValidator</validator-id>
         <validator-class>formel0api.validator.PasswordValidator</validator-class>
     </validator>
+    
 </faces-config>

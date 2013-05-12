@@ -13,36 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package formel0api.beans;
+package formel0api.model;
 
-import formel0api.model.User;
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 
 /**
  *
  * @author Peter
  */
-@ManagedBean(name = "userBean")
-@SessionScoped
-public class UserBean implements Serializable {
+public class Login implements Serializable {
+    
+    private String username;
+    private String password;
 
-    private User user = new User();
-
-    public User getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getSuccessMessage() {
-        if (user.isRegistered()) {
-            return "Registrierung erfolgreich!";
-        }
-        return "";
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

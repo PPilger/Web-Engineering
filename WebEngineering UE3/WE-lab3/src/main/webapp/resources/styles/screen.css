@@ -276,3 +276,8 @@ span#player2 {
     width: 50px;
     float: right;
 }
+
+#firstname_messages, #lastname_messages, #birthday_messages, #sex_messages {
+    display: inline;
+    color: red;
+}

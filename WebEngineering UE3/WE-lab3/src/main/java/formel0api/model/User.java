@@ -13,19 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package formel0api.models;
+package formel0api.model;
 
+import java.io.Serializable;
 import java.util.Date;
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 
 /**
  *
  * @author Peter
  */
-public class User {
+public class User implements Serializable {
     private String firstname;
     private String lastname;
     private Date birthdate;
@@ -33,6 +30,8 @@ public class User {
     
     private String username;
     private String password;
+    
+    private boolean registered;
 
     public String getFirstname() {
         return firstname;
@@ -80,5 +79,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isRegistered() {
+        return registered;
+    }
+
+    public void setRegistered(boolean registered) {
+        this.registered = registered;
     }
 }

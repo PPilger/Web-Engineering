@@ -15,24 +15,41 @@
  */
 package formel0api.beans;
 
-import formel0api.models.User;
-import java.util.Collection;
+import formel0api.model.Login;
+import formel0api.model.User;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 /**
  *
  * @author Peter
  */
-@ManagedBean(name="bean")
+@ManagedBean(name="applicationBean", eager=true)
 @ApplicationScoped
-public class Application {
+public class ApplicationBean implements Serializable {
+
     private Map<String, User> users = new HashMap<String, User>();
-    
+
     public String save(User user) {
-        System.out.println(user.getFirstname()+" "+user.getLastname()+" "+user.getBirthdate());
-        return "#";
+        user.setRegistered(true);
+        users.put(user.getUsername(), user);
+        return "";//login.xhtml";
+    }
+
+    public User login(Login login) {
+        User user = new User();
+        user.setFirstname("Max");
+        user.setLastname("Mustermann");
+        return user;/*
+        User user = users.get(login.getUsername());
+        if (user == null) {
+            return false;
+        }
+        return user.getPassword().equals(login.getPassword());*/
     }
 }

@@ -8,86 +8,54 @@
  *
  * </copyright>
  */
-package formel0api.models;
+package formel0api.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
 /**
  * Class representing a player playing in a {@link Game}.
  */
-@ManagedBean(name="player")
-@SessionScoped
-public class Player {
-
-    /**
-     * History of the positions of the player
-     */
-    private List<Integer> history = new ArrayList<Integer>();
-    /**
-     * The name of this user
-     */
+public class Player implements Serializable {
     private String name;
+    private int lastResult;
+    private int position;
+    private int nextPosition;
     
-    /**
-     * The current position of the user's car
-     */
-    private int position = 0;
-
-    /**
-     * Initializes a {@link Player} with the specified
-     * <code>name</code>.
-     *
-     * @param name to set
-     */
     public Player(String name) {
-        super();
         this.name = name;
-        setPosition(0);
     }
 
-    /**
-     * Returns the name of this player.
-     *
-     * @return the name
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * Return the actual position of this player's car
-     *
-     * @return the actual position of this player's car
-     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getLastResult() {
+        return lastResult;
+    }
+
+    public void setLastResult(int lastResult) {
+        this.lastResult = lastResult;
+    }
+
     public int getPosition() {
-        return this.position;
+        return position;
     }
 
-    /**
-     * Sets the actual position of this player's car
-     *
-     * @param pos actual position of this player's car
-     */
-    public void setPosition(int pos) {
-        this.position = pos;
-        history.add(new Integer(pos));
+    public void setPosition(int position) {
+        this.position = Math.min(position, 6);
+    }
+    
+    public int getNextPosition() {
+        return nextPosition;
     }
 
-    /**
-     * Returns the position at time (now - t) (i.e., if t=0 returns the current
-     * position, if t=1 returns last position, etc.)
-     *
-     * @param t position at time (now - t)
-     */
-    public int getPositionMinusT(int t) {
-        int index = history.size() - 1 - t;
-        if (index >= 0 && index < history.size()) {
-            return history.get(index);
-        }
-        return -1;
+    public void setNextPosition(int nextPosition) {
+        this.nextPosition = Math.min(nextPosition, 6);
     }
 }

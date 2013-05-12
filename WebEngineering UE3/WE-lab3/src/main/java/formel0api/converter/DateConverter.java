@@ -15,8 +15,10 @@
  */
 package formel0api.converter;
 
+import java.util.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -34,7 +36,7 @@ public class DateConverter implements Converter {
         try {
             return format.parse(value);
         } catch (ParseException ex) {
-            throw new ConverterException("Fehler beim Konvertieren des Datums", ex);
+            throw new ConverterException(new FacesMessage("Fehler beim Konvertieren des Datums"), ex);
         }
     }
 
