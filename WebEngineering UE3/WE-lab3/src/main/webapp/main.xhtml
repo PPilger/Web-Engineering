@@ -13,17 +13,17 @@
         <div id="container">
             <div id="bordercontainer">
                 <div id="header">
-                    <div id="header_left"><h1 class="accessibility">#{msg.head}</h1></div>
+                    <div id="header_left"><h1 class="accessibility">#{msg.mainHead}</h1></div>
                     <div id="header_right"></div>
                 </div>
                 <div id="navigation">
-                    <h2 class="accessibility">#{msg.navigation}</h2>
+                    <h2 class="accessibility">#{msg.mainNavigation}</h2>
                     <ui:insert name="navigation"/>
                 </div>
                 <ui:insert name="content"/>
             </div>
             <div id="footer">
-                © 2013 Formel 0
+                #{msg.mainFooter}
             </div>
         </div>
     </h:body>
