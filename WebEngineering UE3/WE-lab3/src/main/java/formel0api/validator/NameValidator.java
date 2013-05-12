@@ -31,13 +31,12 @@ public class NameValidator implements Validator {
 
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
         String str = (String) value;
-		/*
-		 * Nur Buchstaben im Text (ohne Leerzeichen) UND 
-		 * am Anfang duerfen auch keine Leerzeichen stehen!
-		 */
-		if(!str.matches("^[a-zA-Z][^-\\s]*")){
-			throw new ValidatorException(new FacesMessage("Die Eingabe darf nur Buchstaben enthalten!"));
-		}
+        /*
+         * Nur Buchstaben im Text (ohne Leerzeichen) UND 
+         * am Anfang duerfen auch keine Leerzeichen stehen!
+         */
+        if (!str.matches("[a-zA-Z]*")) {
+            throw new ValidatorException(new FacesMessage("Invalid name"));
+        }
     }
-    
 }

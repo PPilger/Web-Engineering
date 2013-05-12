@@ -31,7 +31,7 @@ public class User implements Serializable {
     private String username;
     private String password;
     
-    private boolean registered;
+    private boolean registered = false;
 
     public String getFirstname() {
         return firstname;

@@ -114,7 +114,6 @@ public class GameBean implements Serializable {
         game.setSpentTime(0);
         startTime = System.currentTimeMillis();
         gameOver = false;
-
         refresh();
     }
 

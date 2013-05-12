@@ -32,13 +32,9 @@ import javax.faces.validator.ValidatorException;
 public class PasswordValidator implements Validator{
 
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-        String str = (String) value;
-        if(str.length() < 2) {
-            throw new ValidatorException(new FacesMessage("Passwort ist zu kurz", "Passwort muss mindestens 2 Zeichen lang sein!"));
-        }
         Pattern pattern = Pattern.compile("((?=.*\\d)(?=.*[a-zA-Z]).{2,})");
-        if(!pattern.matcher(str).matches()) {
-           throw new ValidatorException(new FacesMessage("Passwort muss mindestens eine Ziffer und mindestens einen Buchstaben enthalten."));
+        if(!pattern.matcher((String) value).matches()) {
+           throw new ValidatorException(new FacesMessage("Invalid Password"));
         }
     }
     

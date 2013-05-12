@@ -30,6 +30,7 @@ import javax.faces.bean.ViewScoped;
 public class UserBean implements Serializable {
 
     private User user = new User();
+    private boolean showTerms;
 
     public User getUser() {
         return user;
@@ -39,10 +40,13 @@ public class UserBean implements Serializable {
         this.user = user;
     }
 
-    public String getSuccessMessage() {
-        if (user.isRegistered()) {
-            return "Registrierung erfolgreich!";
-        }
-        return "";
+    public boolean isShowTerms() {
+        System.out.println("isShowTerms");
+        return showTerms;
+    }
+
+    public void setShowTerms(boolean showTerms) {
+        System.out.println("setShowTerms");
+        this.showTerms = showTerms;
     }
 }

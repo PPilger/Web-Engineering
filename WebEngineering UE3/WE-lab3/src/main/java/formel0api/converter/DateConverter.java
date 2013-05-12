@@ -29,20 +29,25 @@ import javax.faces.convert.FacesConverter;
  *
  * @author Peter
  */
-@FacesConverter(forClass=Date.class)
+@FacesConverter(value="dateConverter")
 public class DateConverter implements Converter {
 
     private DateFormat format = DateFormat.getDateInstance(DateFormat.MEDIUM);
 
     public Object getAsObject(FacesContext context, UIComponent component, String value) throws ConverterException {
+        System.out.println("getAsObject");
         try {
             return format.parse(value);
         } catch (ParseException ex) {
-            throw new ConverterException(new FacesMessage("Fehler beim Konvertieren des Datums"), ex);
+            throw new ConverterException("Error while converting the date", ex);
         }
     }
 
     public String getAsString(FacesContext context, UIComponent component, Object value) throws ConverterException {
+        System.out.println("getAsString");
+        if(value == null) {
+            return "";
+        }
         return format.format(value);
     }
 }

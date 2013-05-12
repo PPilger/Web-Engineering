@@ -35,10 +35,10 @@ public class ApplicationBean implements Serializable {
 
     private Map<String, User> users = new HashMap<String, User>();
 
-    public String save(User user) {
+    public void save(User user) {
+        System.out.println("save");
         user.setRegistered(true);
         users.put(user.getUsername(), user);
-        return "";//login.xhtml";
     }
 
     public boolean login(Login login) {
