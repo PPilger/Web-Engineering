@@ -60,12 +60,11 @@ public class LoginBean implements Serializable {
 
     public String login() {
         FacesContext context = FacesContext.getCurrentInstance();
-        user = bean.login(login);
-        if(user == null) {
-            context.addMessage("login:form:submit", new FacesMessage("Ungültiger Benutzername oder Passwort!"));
-            return "#";
+        if(bean.login(login)) {
+            return "table.xhtml";
         }
-        return "table.xhtml";
+        context.addMessage("login:form:submit", new FacesMessage("Ungültiger Benutzername oder Passwort!"));
+        return "";
     }
     
     public String logout() {

@@ -33,16 +33,16 @@ import javax.faces.context.FacesContext;
 public class GameBean implements Serializable {
 
     private static final int LAST_FIELD = 6;
-    private Random random;
+    private Random random = new Random();
     private Game game = new Game();
     private boolean gameOver = false;
     private long startTime = System.currentTimeMillis();
-    @ManagedProperty(value = "#{loginBean}")
-    private LoginBean loginBean;
+    @ManagedProperty(value = "#{user}")
+    private User user;
 
-    public void setLoginBean(LoginBean loginBean) {
-        System.out.println("setLoginBean " + System.currentTimeMillis());
-        this.loginBean = loginBean;
+    public void setUser(User user) {
+        System.out.println("setUser " + System.currentTimeMillis());
+        this.user = user;
     }
 
     public Game getGame() {
@@ -52,7 +52,6 @@ public class GameBean implements Serializable {
     @PostConstruct
     public void init() {
         System.out.println("init " + System.currentTimeMillis());
-        User user = loginBean.getUser();
         if (user == null) {
             game.setPlayer1(new Player("Super Mario"));
         } else {
@@ -68,7 +67,10 @@ public class GameBean implements Serializable {
         if (fc.getExternalContext().getSessionMap().containsKey("gameBean")) {
             fc.getExternalContext().getSessionMap().remove("gameBean");
         }
-        return loginBean.logout();
+        if (fc.getExternalContext().getSessionMap().containsKey("user")) {
+            fc.getExternalContext().getSessionMap().remove("user");
+        }
+        return "index.xhtml";
     }
 
     private void refresh() {

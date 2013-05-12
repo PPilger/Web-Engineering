@@ -12,8 +12,8 @@
             <ui:define name="navigation">
                 <h:form id="navForm">
                     <ul>
-                        <li><h:commandLink id="startNewGame" onclick="test()" tabindex="1" value="Neues Spiel">
-                                <f:ajax event="click" listener="#{gameBean.newGame()}" />
+                        <li><h:commandLink id="startNewGame" onclick="#{gameBean.newGame()}" tabindex="1" value="Neues Spiel">
+                                <f:ajax event="click" render="@all"/>
                             </h:commandLink></li>
                         <li><h:commandLink id="logout" action="logout" tabindex="2" value="Ausloggen" /></li>
                     </ul>
@@ -92,81 +92,77 @@
                         <span class="accessibility">An der Reihe ist</span>
                         <div id="currentPlayerName"><h:outputText value="#{gameBean.game.player1.name}"/></div>
                         <h:form id="form">
-                            <h:button id="dice" onclick="test()" tabindex="4" image="resources/img/wuerfel#{gameBean.game.player1.lastResult}.png" title="W&uuml;rfel mit einer #{gameBean.playerResultAsString}" alt="W&uuml;rfel mit einer #{gameBean.playerResultAsString}">
-                                <f:ajax onevent="onRollDice" event="click" listener="#{gameBean.rollDice()}"/>
+                            <h:button id="dice" onclick="#{gameBean.rollDice()}" tabindex="4" image="resources/img/wuerfel#{gameBean.game.player1.lastResult}.png" title="W&uuml;rfel mit einer #{gameBean.playerResultAsString}" alt="W&uuml;rfel mit einer #{gameBean.playerResultAsString}">
+                                <f:ajax onevent="onRollDice" event="click" render="@all"/>
                             </h:button>
                         </h:form>
                     </div>
                 </div>
+                
+                <script type="text/javascript">
+                    //<![CDATA[
+                    function moveTo(player, position) {
+                        if (position <= 0) {
+                            player.appendTo("#start_road");
+                        } else if (position >= 6) {
+                            player.appendTo("#finish_road");
+                        } else {
+                            player.appendTo("#road_" + position);
+                        }
+                    }
+
+                    function animateFromTo(player, oldPos, newPos, callback) {
+                        oldPos = Math.min(oldPos, 6);
+                        newPos = Math.min(newPos, 6);
+
+                        if (oldPos === newPos) {
+                            moveTo(player, oldPos);
+                            callback();
+                        } else {
+                            moveTo(player, oldPos);
+                            player.fadeOut(700, function() {
+                                moveTo(player, newPos);
+                                player.fadeIn(700, callback);
+                            });
+                        }
+                    }
+
+                    function animation(player, oldPos, lastResult, newPos, callback) {
+                        animateFromTo(player, oldPos, oldPos + lastResult, function() {
+                            animateFromTo(player, oldPos + lastResult, newPos, callback);
+                        });
+                    }
+
+                    function onRollDice(data) {
+                        var status = data.status;
+
+                        switch (status) {
+                            case 'begin': // On before the ajax request is sent.
+                                break;
+                            case 'complete': // On after the ajax response is arrived.
+                                break;
+                            case 'success': // On after the HTML DOM is updated (re-rendered).
+                                alert("onRollDice");
+                                moveTo($("#player1"), #{gameBean.game.player1.position});
+                                moveTo($("#player2"), #{gameBean.game.player2.position});
+
+                                animation($("#player1"),
+                                        #{gameBean.game.player1.position},
+                                        #{gameBean.game.player1.lastResult},
+                                        #{gameBean.game.player1.nextPosition},
+                                        function() {
+                                            animation($("#player2"),
+                                                    #{gameBean.game.player2.position},
+                                                    #{gameBean.game.player2.lastResult},
+                                                    #{gameBean.game.player2.nextPosition},
+                                                    function(){});
+                                        });
+                                break;
+                        }
+                    }
+                    //]]>
+                </script>
             </ui:define>
         </ui:composition>
-        
-        <script type="text/javascript">
-            //<![CDATA[
-            function test() {
-                alert('ahhh')
-            }
-
-            function moveTo(player, position) {
-                if (position <= 0) {
-                    player.appendTo("#start_road");
-                } else if (position >= 6) {
-                    player.appendTo("#finish_road");
-                } else {
-                    player.appendTo("#road_" + position);
-                }
-            }
-
-            function animateFromTo(player, oldPos, newPos, callback) {
-                oldPos = Math.min(oldPos, 6);
-                newPos = Math.min(newPos, 6);
-
-                if (oldPos === newPos) {
-                    moveTo(player, oldPos);
-                    callback();
-                } else {
-                    moveTo(player, oldPos);
-                    player.fadeOut(700, function() {
-                        moveTo(player, newPos);
-                        player.fadeIn(700, callback);
-                    });
-                }
-            }
-
-            function animation(player, oldPos, lastResult, newPos, callback) {
-                animateFromTo(player, oldPos, oldPos + lastResult, function() {
-                    animateFromTo(player, oldPos + lastResult, newPos, callback);
-                });
-            }
-
-            function onRollDice(data) {
-                var status = data.status;
-                alert("onRollDice");
-
-                switch (status) {
-                    case 'begin': // On before the ajax request is sent.
-                        break;
-                    case 'complete': // On after the ajax response is arrived.
-                        break;
-                    case 'success': // On after the HTML DOM is updated (re-rendered).
-                        moveTo($("#player1"), #{gameBean.game.player1.position});
-                        moveTo($("#player2"), #{gameBean.game.player2.position});
-
-                        animation($("#player1"),
-                                #{gameBean.game.player1.position},
-                                #{gameBean.game.player1.lastResult},
-                                #{gameBean.game.player1.nextPosition},
-                                function() {
-                                    animation($("#player2"),
-                                            #{gameBean.game.player2.position},
-                                            #{gameBean.game.player2.lastResult},
-                                            #{gameBean.game.player2.nextPosition},
-                                            function(){});
-                                });
-                        break;
-                }
-            }
-            //]]>
-        </script>
     </h:body>
 </html>

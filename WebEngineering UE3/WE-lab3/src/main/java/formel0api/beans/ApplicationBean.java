@@ -41,11 +41,13 @@ public class ApplicationBean implements Serializable {
         return "";//login.xhtml";
     }
 
-    public User login(Login login) {
+    public boolean login(Login login) {
         User user = new User();
         user.setFirstname("Max");
         user.setLastname("Mustermann");
-        return user;/*
+        FacesContext fc = FacesContext.getCurrentInstance();
+        fc.getExternalContext().getSessionMap().put("user", user);
+        return true;/*
         User user = users.get(login.getUsername());
         if (user == null) {
             return false;
