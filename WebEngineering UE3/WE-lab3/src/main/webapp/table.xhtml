@@ -18,7 +18,7 @@
                         <li><h:commandLink id="logout" action="#{gameBean.logout()}" tabindex="2" value="#{msg.tableLogout}" /></li>
                     </ul>
                     
-                    <h:panelGroup id="animations">
+                    <h:panelGroup id="animations" layout="block">
                         <script type="text/javascript">
                             //<![CDATA[
                             function onStartNewGame(data) {
@@ -35,7 +35,7 @@
             <ui:define name="content">
                 <div id="main-area">
                     <h:form id="form">
-                        <h:panelGroup id="infoGroup">
+                        <h:panelGroup id="infoGroup" layout="block">
                             <div class="info">
                                 <h2>#{msg.tableGameInfos}</h2>
 
@@ -71,7 +71,7 @@
                                 </table>    	  
                             </div>
                         </h:panelGroup>
-                        <h:panelGroup id="fieldGroup">
+                        <h:panelGroup id="fieldGroup" layout="block">
                             <div id="field" class="field">
                                 <h2 class="accessibility">#{msg.tableGameZone}</h2>
                                 <ol id="road">
@@ -106,7 +106,7 @@
                             </div>
                         </h:panelGroup>
                         
-                        <h:panelGroup id="playerGroup">
+                        <h:panelGroup id="playerGroup" layout="block">
                             <div id="player" class="player">
                                 <h2 class="accessibility">#{msg.tableCubeZone}</h2>
                                 <span class="accessibility">#{msg.tableCubeInfo}</span>
@@ -117,7 +117,7 @@
                             </div>
                         </h:panelGroup>
                         
-                        <h:panelGroup id="animations">
+                        <h:panelGroup id="animations" layout="block">
                             <script type="text/javascript">
                                 //<![CDATA[
                                 function onRollDice(data) {

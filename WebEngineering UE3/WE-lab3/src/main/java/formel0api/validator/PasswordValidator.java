@@ -28,23 +28,22 @@ import javax.faces.validator.ValidatorException;
  * @author Peter
  */
 @FacesValidator(value = "passwordValidator")
-public class PasswordValidator implements Validator{
+public class PasswordValidator implements Validator {
 
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
         String wert = (String) value;
-				
-		if(wert.length() < 2) {
-			throw new ValidatorException(new FacesMessage("Password zu kurz"));
-		}
-		
-		if(!wert.matches(".*[a-zA-Z].*")){
-			throw new ValidatorException(new FacesMessage("Password enthaelt keinen Buchstaben"));
-		}
-		
-		if(!wert.matches(".*[0-9].*")) {
-			throw new ValidatorException(new FacesMessage("Password enthaelt keine Zahlen"));
-		}
-		
+
+        if (wert.length() < 2) {
+            throw new ValidatorException(new FacesMessage("Password zu kurz"));
+        }
+
+        if (!wert.matches(".*[a-zA-Z].*")) {
+            throw new ValidatorException(new FacesMessage("Password enthaelt keinen Buchstaben"));
+        }
+
+        if (!wert.matches(".*[0-9].*")) {
+            throw new ValidatorException(new FacesMessage("Password enthaelt keine Zahlen"));
+        }
+
     }
-    
 }
