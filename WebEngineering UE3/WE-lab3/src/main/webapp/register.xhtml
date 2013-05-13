@@ -5,7 +5,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:body>
-        <ui:composition template="main.xhtml">
+        <ui:composition template="index.xhtml">
             <ui:define name="title">
                 <title>#{msg.registerTitle}</title>
             </ui:define>
@@ -70,7 +70,7 @@
 
                             <div>
                                 <h:outputLabel for="password" class="registerform" value="#{msg.registerPw}" />
-                                <h:inputSecret redisplay="false" id="password" value="#{userBean.user.password}" validatorMessage="#{msg.registerInvalidPassword}" required="true" requiredMessage="#{msg.registerEmptyPassword}">
+                                <h:inputSecret id="password" value="#{userBean.user.password}" validatorMessage="#{msg.registerInvalidPassword}" required="true" requiredMessage="#{msg.registerEmptyPassword}">
                                     <f:validator validatorId="passwordValidator" />
                                 </h:inputSecret>
                                 <h:message id="password_messages" for="password"/>

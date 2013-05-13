@@ -50,7 +50,6 @@ public class LoginBean implements Serializable {
     }
 
     public void setBean(ApplicationBean bean) {
-        System.out.println("setBean "+bean);
         this.bean = bean;
     }
 
@@ -63,7 +62,6 @@ public class LoginBean implements Serializable {
     }
 
     public String login() {
-        System.out.println(bean);
         FacesContext context = FacesContext.getCurrentInstance();
         User user = bean.login(login);
         
