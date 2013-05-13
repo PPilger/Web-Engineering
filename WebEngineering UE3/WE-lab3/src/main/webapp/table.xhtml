@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="#{msg.langCode}" xml:lang="#{msg.langCode}"
+<html xmlns="http://www.w3.org/1999/xhtml" lang="#{msg.lang}" xml:lang="#{msg.lang}" 
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
@@ -22,7 +22,7 @@
                         <script type="text/javascript">
                             //<![CDATA[
                             function onStartNewGame(data) {
-                                if('success' == data.status) {
+                                if('success' === data.status) {
                                     moveTo($("#player1"), 0);
                                     moveTo($("#player2"), 0);
                                 }

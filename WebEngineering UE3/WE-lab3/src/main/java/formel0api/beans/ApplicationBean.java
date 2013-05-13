@@ -29,29 +29,33 @@ import javax.faces.context.FacesContext;
  *
  * @author Peter
  */
-@ManagedBean(name="applicationBean", eager=true)
+@ManagedBean(name="applicationBean")
 @ApplicationScoped
 public class ApplicationBean implements Serializable {
 
-    private Map<String, User> users = new HashMap<String, User>();
-
-    public void save(User user) {
-        System.out.println("save");
-        user.setRegistered(true);
-        users.put(user.getUsername(), user);
+    private Map<String, User> users;
+    
+    public ApplicationBean() {
+        System.out.println(this);
+        users = new HashMap<String, User>();
     }
 
-    public boolean login(Login login) {
-        User user = new User();
-        user.setFirstname("Max");
-        user.setLastname("Mustermann");
-        FacesContext fc = FacesContext.getCurrentInstance();
-        fc.getExternalContext().getSessionMap().put("user", user);
-        return true;/*
+    public void save(User user) {
+        System.out.println("save "+user.getUsername() + ", "+user.getPassword());
+        user.setRegistered(true);
+        users.put(user.getUsername(), user);
+        System.out.println("users: " + users);
+    }
+
+    public User login(Login login) {
+        System.out.println("login "+login.getUsername() + ", "+login.getPassword());
+        System.out.println("users: " + users);
         User user = users.get(login.getUsername());
         if (user == null) {
-            return false;
+            return null;
+        } else if(user.getPassword().equals(login.getPassword())) {
+            return user;
         }
-        return user.getPassword().equals(login.getPassword());*/
+        return null;
     }
 }

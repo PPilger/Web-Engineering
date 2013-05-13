@@ -281,7 +281,7 @@ span#player2 {
     float: right;
 }
 
-#form\3A firstname_messages, #form\3A lastname_messages, #form\3A birthday_messages, #form\3A sex_messages, #form\3A username_messages, #form\3A password_messages {
+#form\3A firstname_messages, #form\3A lastname_messages, #form\3A birthday_messages, #form\3A sex_messages, #form\3A username_messages, #form\3A password_messages, #login\3A form\3A login_messages {
     color: red;
     margin-left: 15px;
     font-style: italic;

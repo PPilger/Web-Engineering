@@ -18,11 +18,14 @@ package formel0api.beans;
 import formel0api.model.Login;
 import formel0api.model.User;
 import java.io.Serializable;
+import java.util.Map;
+import java.util.ResourceBundle;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -47,6 +50,7 @@ public class LoginBean implements Serializable {
     }
 
     public void setBean(ApplicationBean bean) {
+        System.out.println("setBean "+bean);
         this.bean = bean;
     }
 
@@ -59,15 +63,19 @@ public class LoginBean implements Serializable {
     }
 
     public String login() {
+        System.out.println(bean);
         FacesContext context = FacesContext.getCurrentInstance();
-        if(bean.login(login)) {
+        User user = bean.login(login);
+        
+        if(user != null) {
+            Map<String, Object> map = context.getExternalContext().getSessionMap();
+            GameBean bean = new GameBean(user);
+            map.put("gameBean", bean);
             return "table.xhtml";
         }
-        context.addMessage("login:form:submit", new FacesMessage("Ungültiger Benutzername oder Passwort!"));
+        
+        ResourceBundle rb = ResourceBundle.getBundle("i18n", context.getExternalContext().getRequestLocale());
+        context.addMessage("login:form:submit", new FacesMessage(rb.getString("indexLoginFailed")));
         return "";
-    }
-    
-    public String logout() {
-        return "logout";
     }
 }

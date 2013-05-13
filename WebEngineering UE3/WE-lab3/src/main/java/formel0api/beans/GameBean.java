@@ -17,7 +17,9 @@ package formel0api.beans;
 
 import formel0api.model.*;
 import java.io.Serializable;
+import java.util.Locale;
 import java.util.Random;
+import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -38,13 +40,18 @@ public class GameBean implements Serializable {
     private Game game = new Game();
     private boolean gameOver = false;
     private long startTime = System.currentTimeMillis();
-    @ManagedProperty(value = "#{user}")
+    //@ManagedProperty(value = "#{user}")
     private User user;
 
-    public void setUser(User user) {
-        System.out.println("setUser " + System.currentTimeMillis());
+    public GameBean(User user) {
         this.user = user;
+        init();
     }
+    
+    /*public void setUser(User user) {
+        this.user = user;
+        init();
+    }*/
 
     public Game getGame() {
         return game;
@@ -54,9 +61,7 @@ public class GameBean implements Serializable {
         return gameOver;
     }
 
-    @PostConstruct
     public void init() {
-        System.out.println("init " + System.currentTimeMillis());
         if (user == null) {
             game.setPlayer1(new Player("Super Mario"));
         } else {
@@ -112,7 +117,6 @@ public class GameBean implements Serializable {
     }
 
     public void newGame(ActionEvent ae) {
-        System.out.println("newGame");
         resetPlayer(game.getPlayer1());
         resetPlayer(game.getPlayer2());
         game.setRound(1);
@@ -124,7 +128,6 @@ public class GameBean implements Serializable {
     }
 
     public void rollDice(ActionEvent ae) {
-        System.out.println("rollDice");
         game.getPlayer1().setPosition(game.getPlayer1().getNextPosition());
         game.getPlayer2().setPosition(game.getPlayer2().getNextPosition());
 
@@ -140,17 +143,18 @@ public class GameBean implements Serializable {
 
     public String getPlayerResultAsString() {
         int num = game.getPlayer1().getLastResult();
+        FacesContext context = FacesContext.getCurrentInstance();
+        ResourceBundle rb = ResourceBundle.getBundle("i18n", context.getExternalContext().getRequestLocale());
+        
         switch (num) {
             case 0:
-                return "Null";
+                return rb.getString("tableCubeNumber0");
             case 1:
-                return "Eins";
+                return rb.getString("tableCubeNumber1");
             case 2:
-                return "Zwei";
+                return rb.getString("tableCubeNumber2");
             case 3:
-                return "Drei";
-            case 4:
-                return "Vier";
+                return rb.getString("tableCubeNumber3");
             default:
                 return Integer.toString(num);
         }
