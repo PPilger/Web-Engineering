@@ -23,6 +23,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 /**
  *
@@ -62,7 +63,7 @@ public class GameBean implements Serializable {
             game.setPlayer1(new Player(user.getFirstname() + " " + user.getLastname()));
         }
         game.setPlayer2(new Player("Super C"));
-        newGame();
+        newGame(null);
         refresh();
     }
 
@@ -110,7 +111,8 @@ public class GameBean implements Serializable {
         return position == 2 || position == 5;
     }
 
-    public void newGame() {
+    public void newGame(ActionEvent ae) {
+        System.out.println("newGame");
         resetPlayer(game.getPlayer1());
         resetPlayer(game.getPlayer2());
         game.setRound(1);
@@ -121,7 +123,8 @@ public class GameBean implements Serializable {
         refresh();
     }
 
-    public void rollDice() {
+    public void rollDice(ActionEvent ae) {
+        System.out.println("rollDice");
         game.getPlayer1().setPosition(game.getPlayer1().getNextPosition());
         game.getPlayer2().setPosition(game.getPlayer2().getNextPosition());
 

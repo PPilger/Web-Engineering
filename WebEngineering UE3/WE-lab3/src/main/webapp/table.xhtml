@@ -12,28 +12,22 @@
             <ui:define name="navigation">
                 <h:form id="navForm">
                     <ul>
-                        <li><h:commandLink id="startNewGame" onclick="#{gameBean.newGame()}" tabindex="1" value="#{msg.tableNewGame}">
-                                <f:ajax onevent="onStartNewGame" event="click" render="@this form:infoGroup form:fieldGroup animations form:playerGroup" execute="animations"/>
+                        <li><h:commandLink id="startNewGame" actionListener="#{gameBean.newGame}" tabindex="1" value="#{msg.tableNewGame}">
+                                <f:ajax onevent="onStartNewGame" render="@this form:infoGroup form:fieldGroup animations form:playerGroup" execute="@this"/>
                             </h:commandLink></li>
                         <li><h:commandLink id="logout" action="#{gameBean.logout()}" tabindex="2" value="#{msg.tableLogout}" /></li>
                     </ul>
                     
                     <h:panelGroup id="animations">
                         <script type="text/javascript">
+                            //<![CDATA[
                             function onStartNewGame(data) {
-                                var status = data.status;
-
-                                switch (status) {
-                                    case 'begin': // On before the ajax request is sent.
-                                        break;
-                                    case 'complete': // On after the ajax response is arrived.
-                                        break;
-                                    case 'success': // On after the HTML DOM is updated (re-rendered).
-                                        moveTo($("#player1"), 0);
-                                        moveTo($("#player2"), 0);
-                                        break;
+                                if('success' == data.status) {
+                                    moveTo($("#player1"), 0);
+                                    moveTo($("#player2"), 0);
                                 }
                             }
+                            //]]>
                         </script>
                     </h:panelGroup>
                 </h:form>
@@ -117,8 +111,8 @@
                                 <h2 class="accessibility">#{msg.tableCubeZone}</h2>
                                 <span class="accessibility">#{msg.tableCubeInfo}</span>
                                 <div id="currentPlayerName"><h:outputText value="#{gameBean.game.player1.name}"/></div>
-                                    <h:commandButton id="dice" action="#{gameBean.rollDice()}" tabindex="4" image="resources/img/wuerfel#{gameBean.game.player1.lastResult}.png" title="#{msg.tableCubeInfo1} #{gameBean.playerResultAsString}" alt="#{msg.tableCubeInfo1} #{gameBean.playerResultAsString}">
-                                        <f:ajax onevent="onRollDice" render="@this infoGroup animations" execute="@this animations"/>
+                                    <h:commandButton id="dice" actionListener="#{gameBean.rollDice}" tabindex="4" image="resources/img/wuerfel#{gameBean.game.player1.lastResult}.png" title="#{msg.tableCubeInfo1} #{gameBean.playerResultAsString}" alt="#{msg.tableCubeInfo1} #{gameBean.playerResultAsString}">
+                                        <f:ajax onevent="onRollDice" render="@this infoGroup animations" execute="@this"/>
                                     </h:commandButton>
                             </div>
                         </h:panelGroup>
@@ -176,8 +170,6 @@
                 
                 <script type="text/javascript">
                     //<![CDATA[
-                    //moveTo($("#player1"), 0);
-                    //moveTo($("#player2"), 0);
                     moveTo($("#player1"), #{gameBean.game.player1.nextPosition});
                     moveTo($("#player2"), #{gameBean.game.player2.nextPosition});
 
