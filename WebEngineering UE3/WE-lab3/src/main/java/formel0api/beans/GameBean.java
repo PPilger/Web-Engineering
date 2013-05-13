@@ -89,7 +89,10 @@ public class GameBean implements Serializable {
         } else if (game.getPlayer1().getNextPosition() < game.getPlayer2().getNextPosition()) {
             game.setLeader(game.getPlayer2().getName());
         } else {
-            game.setLeader("mehrere");
+            FacesContext context = FacesContext.getCurrentInstance();
+            ResourceBundle rb = ResourceBundle.getBundle("i18n", context.getExternalContext().getRequestLocale());
+            
+            game.setLeader(rb.getString("tableMultiple"));
         }
     }
 
