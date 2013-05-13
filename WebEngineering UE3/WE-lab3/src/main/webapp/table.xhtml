@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"
+<html xmlns="http://www.w3.org/1999/xhtml" lang="#{msg.langCode}" xml:lang="#{msg.langCode}"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
@@ -13,94 +13,174 @@
                 <h:form id="navForm">
                     <ul>
                         <li><h:commandLink id="startNewGame" onclick="#{gameBean.newGame()}" tabindex="1" value="#{msg.tableNewGame}">
-                                <f:ajax event="click" render="@all"/>
+                                <f:ajax onevent="onStartNewGame" event="click" render="@this form:infoGroup form:fieldGroup animations form:playerGroup" execute="animations"/>
                             </h:commandLink></li>
-                        <li><h:commandLink id="logout" action="logout" tabindex="2" value="#{msg.tableLogout}" /></li>
+                        <li><h:commandLink id="logout" action="#{gameBean.logout()}" tabindex="2" value="#{msg.tableLogout}" /></li>
                     </ul>
+                    
+                    <h:panelGroup id="animations">
+                        <script type="text/javascript">
+                            function onStartNewGame(data) {
+                                var status = data.status;
+
+                                switch (status) {
+                                    case 'begin': // On before the ajax request is sent.
+                                        break;
+                                    case 'complete': // On after the ajax response is arrived.
+                                        break;
+                                    case 'success': // On after the HTML DOM is updated (re-rendered).
+                                        moveTo($("#player1"), 0);
+                                        moveTo($("#player2"), 0);
+                                        break;
+                                }
+                            }
+                        </script>
+                    </h:panelGroup>
                 </h:form>
             </ui:define>
             <ui:define name="content">
                 <div id="main-area">
-                    <div class="info">
-                        <h2>#{msg.tableGameInfos}</h2>
+                    <h:form id="form">
+                        <h:panelGroup id="infoGroup">
+                            <div class="info">
+                                <h2>#{msg.tableGameInfos}</h2>
 
-                        <table summary="#{msg.tableSummary}">
-                            <tr>
-                                <th id="leaderLabel" class="label">#{msg.tableLeader}</th>
-                                <td id="leader" class="data"><h:outputText value="#{gameBean.game.leader}"/></td>
-                            </tr>
-                            <tr>
-                                <th id="roundLabel" class="label">#{msg.tableRound}</th>
-                                <td id="round" class="data"><h:outputText value="#{gameBean.game.round}"/></td>
-                            </tr>
-                            <tr>
-                                <th id="timeLabel" class="label">#{msg.tableTime}</th>
-                                <td id="time" class="data"><h:outputText value="#{gameBean.game.spentTime}"/></td></tr>
-                            <tr>
-                                <th id="computerScoreLabel" class="label">#{msg.tableResult} <em><h:outputText value="#{gameBean.game.player2.name}"/></em></th>
-                                <td id="computerScore" class="data"><h:outputText value="#{gameBean.game.player2.lastResult}"/></td>
-                            </tr>
-                        </table>
+                                <table summary="#{msg.tableSummary}">
+                                    <tr>
+                                        <th id="leaderLabel" class="label">#{msg.tableLeader}</th>
+                                        <td id="leader" class="data"><h:outputText value="#{gameBean.game.leader}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <th id="roundLabel" class="label">#{msg.tableRound}</th>
+                                        <td id="round" class="data"><h:outputText value="#{gameBean.game.round}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <th id="timeLabel" class="label">#{msg.tableTime}</th>
+                                        <td id="time" class="data"><h:outputText value="#{gameBean.game.time}"/></td></tr>
+                                    <tr>
+                                        <th id="computerScoreLabel" class="label">#{msg.tableResult} <em><h:outputText value="#{gameBean.game.player2.name}"/></em></th>
+                                        <td id="computerScore" class="data"><h:outputText value="#{gameBean.game.player2.lastResult}"/></td>
+                                    </tr>
+                                </table>
 
-                        <h2>#{msg.tablePlayer}</h2>
+                                <h2>#{msg.tablePlayer}</h2>
 
-                        <table summary="#{msg.tableSummary1}">
-                            <tr>
-                                <th id="player1NameLabel" class="label">#{msg.tablePlayer1}</th>
-                                <td id="player1Name" class="data"><h:outputText value="#{gameBean.game.player1.name}"/></td>
-                            </tr>
-                            <tr>
-                                <th id="player2NameLabel" class="label">#{msg.tablePlayer2}</th>
-                                <td id="player2Name" class="data"><h:outputText value="#{gameBean.game.player2.name}"/></td>
-                            </tr>
-                        </table>    	  
-                    </div>
-                    <div id="field" class="field">
-                        <h2 class="accessibility">#{msg.tableGameZone}</h2>
-                        <ol id="road">
-                            <li id="start_road">
-                                <span class="accessibility">#{msg.tableStartRoad}</span>
-                            </li>
-                            <li class="empty_road" id="road_1">
-                                <span class="accessibility">#{msg.tableField2}</span>
-                            </li>
-                            <li class="oil_road" id="road_2">
-                                <span class="accessibility">#{msg.tableField3}</span>
-                                <span id="player1">
-                                    <span class="accessibility"><em>#{msg.tablePlayer1}</em></span>
-                                </span>
-                            </li>
-                            <li class="empty_road" id="road_3">
-                                <span class="accessibility">#{msg.tableField4}</span>
-                            </li>
-                            <li class="empty_road" id="road_4">
-                                <span class="accessibility">#{msg.tableField5}</span>
-                                <span id="player2">
-                                    <span class="accessibility"><em>#{msg.tablePlayer2}</em></span>
-                                </span>
-                            </li>
-                            <li class="oil_road" id="road_5">
-                                <span class="accessibility">#{msg.tableField6}</span>
-                            </li>
-                            <li id="finish_road">
-                                <span class="accessibility">#{msg.tableFinishRoad}</span>
-                            </li>
-                        </ol>
-                    </div>
-                    <div id="player" class="player">
-                        <h2 class="accessibility">#{msg.tableCubeZone}</h2>
-                        <span class="accessibility">#{msg.tableCubeInfo}</span>
-                        <div id="currentPlayerName"><h:outputText value="#{gameBean.game.player1.name}"/></div>
-                        <h:form id="form">
-                            <h:button id="dice" onclick="#{gameBean.rollDice()}" tabindex="4" image="resources/img/wuerfel#{gameBean.game.player1.lastResult}.png" title="#{msg.tableCubeInfo1} #{gameBean.playerResultAsString}" alt="#{msg.tableCubeInfo1} #{gameBean.playerResultAsString}">
-                                <f:ajax onevent="onRollDice" event="click" render="@all"/>
-                            </h:button>
-                        </h:form>
-                    </div>
+                                <table summary="#{msg.tableSummary1}">
+                                    <tr>
+                                        <th id="player1NameLabel" class="label">#{msg.tablePlayer1}</th>
+                                        <td id="player1Name" class="data"><h:outputText value="#{gameBean.game.player1.name}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <th id="player2NameLabel" class="label">#{msg.tablePlayer2}</th>
+                                        <td id="player2Name" class="data"><h:outputText value="#{gameBean.game.player2.name}"/></td>
+                                    </tr>
+                                </table>    	  
+                            </div>
+                        </h:panelGroup>
+                        <h:panelGroup id="fieldGroup">
+                            <div id="field" class="field">
+                                <h2 class="accessibility">#{msg.tableGameZone}</h2>
+                                <ol id="road">
+                                    <li id="start_road">
+                                        <span class="accessibility">#{msg.tableStartRoad}</span>
+                                    </li>
+                                    <li class="empty_road" id="road_1">
+                                        <span class="accessibility">#{msg.tableField2}</span>
+                                    </li>
+                                    <li class="oil_road" id="road_2">
+                                        <span class="accessibility">#{msg.tableField3}</span>
+                                        <span id="player1">
+                                            <span class="accessibility"><em>#{msg.tablePlayer1}</em></span>
+                                        </span>
+                                    </li>
+                                    <li class="empty_road" id="road_3">
+                                        <span class="accessibility">#{msg.tableField4}</span>
+                                    </li>
+                                    <li class="empty_road" id="road_4">
+                                        <span class="accessibility">#{msg.tableField5}</span>
+                                        <span id="player2">
+                                            <span class="accessibility"><em>#{msg.tablePlayer2}</em></span>
+                                        </span>
+                                    </li>
+                                    <li class="oil_road" id="road_5">
+                                        <span class="accessibility">#{msg.tableField6}</span>
+                                    </li>
+                                    <li id="finish_road">
+                                        <span class="accessibility">#{msg.tableFinishRoad}</span>
+                                    </li>
+                                </ol>
+                            </div>
+                        </h:panelGroup>
+                        
+                        <h:panelGroup id="playerGroup">
+                            <div id="player" class="player">
+                                <h2 class="accessibility">#{msg.tableCubeZone}</h2>
+                                <span class="accessibility">#{msg.tableCubeInfo}</span>
+                                <div id="currentPlayerName"><h:outputText value="#{gameBean.game.player1.name}"/></div>
+                                    <h:commandButton id="dice" action="#{gameBean.rollDice()}" tabindex="4" image="resources/img/wuerfel#{gameBean.game.player1.lastResult}.png" title="#{msg.tableCubeInfo1} #{gameBean.playerResultAsString}" alt="#{msg.tableCubeInfo1} #{gameBean.playerResultAsString}">
+                                        <f:ajax onevent="onRollDice" render="@this infoGroup animations" execute="@this animations"/>
+                                    </h:commandButton>
+                            </div>
+                        </h:panelGroup>
+                        
+                        <h:panelGroup id="animations">
+                            <script type="text/javascript">
+                                //<![CDATA[
+                                function onRollDice(data) {
+                                    var status = data.status;
+
+                                    switch (status) {
+                                        case 'begin': // On before the ajax request is sent.
+                                            break;
+                                        case 'complete': // On after the ajax response is arrived.
+                                            break;
+                                        case 'success': // On after the HTML DOM is updated (re-rendered).
+                                            f();
+                                            break;
+                                    }
+                                }
+                                
+                                function f() {
+                                    if(!#{gameBean.gameOver}) {
+                                        moveTo($("#player1"), #{gameBean.game.player1.position});
+                                        moveTo($("#player2"), #{gameBean.game.player2.position});
+
+                                        animation($("#player1"),
+                                                #{gameBean.game.player1.position},
+                                                #{gameBean.game.player1.lastResult},
+                                                #{gameBean.game.player1.nextPosition},
+                                                function() {
+                                                    animation($("#player2"),
+                                                            #{gameBean.game.player2.position},
+                                                            #{gameBean.game.player2.lastResult},
+                                                            #{gameBean.game.player2.nextPosition},
+                                                            function(){});
+                                                });
+                                    } else {
+                                        animateFromTo($("#player1"),
+                                                #{gameBean.game.player1.position},
+                                                #{gameBean.game.player1.nextPosition},
+                                                function(){
+                                                    animateFromTo($("#player2"),
+                                                            #{gameBean.game.player2.position},
+                                                            #{gameBean.game.player2.nextPosition},
+                                                            function(){});
+                                        });
+                                    }
+                                }
+                                //]]>
+                            </script>
+                        </h:panelGroup>
+                    </h:form>
                 </div>
                 
                 <script type="text/javascript">
                     //<![CDATA[
+                    //moveTo($("#player1"), 0);
+                    //moveTo($("#player2"), 0);
+                    moveTo($("#player1"), #{gameBean.game.player1.nextPosition});
+                    moveTo($("#player2"), #{gameBean.game.player2.nextPosition});
+
                     function moveTo(player, position) {
                         if (position <= 0) {
                             player.appendTo("#start_road");
@@ -132,36 +212,8 @@
                             animateFromTo(player, oldPos + lastResult, newPos, callback);
                         });
                     }
-
-                    function onRollDice(data) {
-                        var status = data.status;
-
-                        switch (status) {
-                            case 'begin': // On before the ajax request is sent.
-                                break;
-                            case 'complete': // On after the ajax response is arrived.
-                                break;
-                            case 'success': // On after the HTML DOM is updated (re-rendered).
-                                alert("onRollDice");
-                                moveTo($("#player1"), #{gameBean.game.player1.position});
-                                moveTo($("#player2"), #{gameBean.game.player2.position});
-
-                                animation($("#player1"),
-                                        #{gameBean.game.player1.position},
-                                        #{gameBean.game.player1.lastResult},
-                                        #{gameBean.game.player1.nextPosition},
-                                        function() {
-                                            animation($("#player2"),
-                                                    #{gameBean.game.player2.position},
-                                                    #{gameBean.game.player2.lastResult},
-                                                    #{gameBean.game.player2.nextPosition},
-                                                    function(){});
-                                        });
-                                break;
-                        }
-                    }
                     //]]>
-                </script>
+                 </script>
             </ui:define>
         </ui:composition>
     </h:body>

@@ -225,6 +225,7 @@ li#start_road {
     background-position: center;
     vertical-align:top;
     height: 98px;
+    width: 123px;
     padding: 0;
     margin: 0;
 }
@@ -235,6 +236,7 @@ li.empty_road {
     background-position: center;
     vertical-align:top;
     height: 80px;
+    width: 123px;
     padding: 0;
     margin: 0;
 }
@@ -245,6 +247,7 @@ li.oil_road {
     background-position: center;
     vertical-align:top;
     height: 80px;
+    width: 123px;
     padding: 0;
     margin: 0;
 }
@@ -255,6 +258,7 @@ li#finish_road {
     background-position: center;
     vertical-align: top;
     height: 98px;
+    width: 123px;
     padding: 0;
     margin: 0;
 }
@@ -279,6 +283,6 @@ span#player2 {
 
 #form\3A firstname_messages, #form\3A lastname_messages, #form\3A birthday_messages, #form\3A sex_messages, #form\3A username_messages, #form\3A password_messages {
     color: red;
-	margin-left: 15px;
-	font-style: italic;
+    margin-left: 15px;
+    font-style: italic;
 }

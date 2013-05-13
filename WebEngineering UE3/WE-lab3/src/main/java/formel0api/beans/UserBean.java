@@ -45,7 +45,6 @@ public class UserBean implements Serializable {
     }
 
     public void setShowTerms(boolean showTerms) {
-        System.out.println("setShowTerms"+System.currentTimeMillis());
         this.showTerms = showTerms;
     }
 }

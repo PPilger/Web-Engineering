@@ -48,6 +48,10 @@ public class GameBean implements Serializable {
     public Game getGame() {
         return game;
     }
+    
+    public boolean isGameOver() {
+        return gameOver;
+    }
 
     @PostConstruct
     public void init() {
@@ -107,27 +111,26 @@ public class GameBean implements Serializable {
     }
 
     public void newGame() {
-        System.out.println("newGame " + System.currentTimeMillis());
         resetPlayer(game.getPlayer1());
         resetPlayer(game.getPlayer2());
         game.setRound(1);
         game.setSpentTime(0);
         startTime = System.currentTimeMillis();
         gameOver = false;
+        
         refresh();
     }
 
     public void rollDice() {
-        System.out.println("rollDice " + System.currentTimeMillis());
-        if (!gameOver) {
-            game.getPlayer1().setPosition(game.getPlayer1().getNextPosition());
-            game.getPlayer2().setPosition(game.getPlayer2().getNextPosition());
+        game.getPlayer1().setPosition(game.getPlayer1().getNextPosition());
+        game.getPlayer2().setPosition(game.getPlayer2().getNextPosition());
 
+        if (!gameOver) {
             movePlayer(game.getPlayer1());
             movePlayer(game.getPlayer2());
-            game.setSpentTime(System.currentTimeMillis() - startTime);
+            game.setSpentTime((System.currentTimeMillis() - startTime)/1000);
             game.setRound(game.getRound() + 1);
-
+            
             refresh();
         }
     }
