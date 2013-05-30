@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:mc="http://java.sun.com/jsf/composite/mycomponents">
+    <body>
+
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="navigation">
+                <h:form>
+                    <ul>
+                        <li><h:commandLink value="#{msg.restart}" action="#{lc.gc.init}"/></li>
+                        <li><h:link outcome="index" value="#{msg.logout} (#{lc.name})"/></li>
+                    </ul>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="main-area">
+                <div id="main-area">
+                <h:panelGroup layout="block" id="info" class="info">
+                    <h2>#{msg.gameinfo}</h2>
+                    <table summary="#{msg.gameinfotable}">
+                          <tr>
+                                  <th class="label">#{msg.gameinfoleader}</th>
+                                  <td class="data">
+                                        <c:if test="#{lc.gc.leader == null}"><h:outputText id="leader" value="#{msg.gameinfoleaderseveral}"/></c:if>
+                                        <c:if test="#{lc.gc.leader != null}"><h:outputText id="leader" value="#{lc.gc.leader.name}"/></c:if>
+                                  </td>
+                          </tr>
+                          <tr>                    
+                                  <th class="label">#{msg.gameinforound}</th>
+                                  <td class="data">#{lc.gc.round}</td>
+                          </tr>
+                          <tr>
+                                  <th class="label">#{msg.gameinfotime}</th>
+                                  <td class="data">#{lc.gc.time}"</td>
+                          </tr>
+                          <tr>
+                                  <th class="label">#{msg.scoreplayer2} <em>#{lc.gc.player2.name}</em></th>
+                                  <td class="data">#{lc.gc.computerScore}</td>
+                          </tr>  	      	      	    
+                    </table>   
+                    <h2>#{msg.player}</h2>
+                    <table>
+                          <tr>
+                                  <th class="label">#{msg.player1}</th>
+                                  <td class="data">#{lc.gc.player1.name}</td>
+                          </tr>
+                          <tr>
+                                  <th class="label">#{msg.player2}</th>
+                                  <td class="data">#{lc.gc.player2.name}</td>
+                          </tr>
+                    </table>    	  
+                  </h:panelGroup>
+                  <div id="field" class="field">
+                          <h2 style="display:none;">#{msg.playarea}</h2>
+                          <ol id="road">
+                                  <li id="start_road">
+                                          <span class="accessibility">#{msg.fieldstart}</span>
+                                          <span id="player1"><span class="accessibility"><em>#{msg.player1}</em></span></span>
+                                          <span id="player2"><span class="accessibility"><em>#{msg.player2}</em></span></span>
+                                  </li>
+                                  <li class="empty_road" id="road_1">
+                                          <span class="accessibility">#{msg.field2}</span>
+                                  </li>
+                                  <li class="oil_road" id="road_2">
+                                          <span class="accessibility">#{msg.field3}</span>
+                                  </li>
+                                  <li class="empty_road" id="road_3">
+                                          <span class="accessibility">#{msg.field4}</span>
+                                  </li>
+                                  <li class="empty_road"  id="road_4">
+                                          <span class="accessibility">#{msg.field5}</span>
+                                  </li>
+                                  <li class="oil_road" id="road_5">
+                                          <span class="accessibility">#{msg.field6}</span>
+                                  </li>
+                                  <li id="finish_road">
+                                          <span class="accessibility">#{msg.fieldend}</span>
+                                  </li>
+                          </ol>
+                  </div>
+                  <h:panelGroup layout="block" id="player" class="player">
+                          <h2 style="display:none;">#{msg.dice}</h2>
+                          <span style="display:none;">#{msg.nextplayer}</span><div id="player_name">#{lc.gc.player1.name}</div>
+
+                         <h:form>
+                            <c:if test="#{lc.gc.gameOver == false}">
+                                <h:commandLink id="rollDiceCommand" action="#{lc.gc.doRound()}">
+                                    <h:graphicImage id="dice" title="#{msg.dicescore} #{lc.gc.playerScore}" name="../img/wuerfel#{lc.gc.playerScore}.png" alt="#{msg.dicescore} #{lc.gc.playerScore}"/>
+                                    <f:ajax render=":player :info :script"/>
+                                </h:commandLink>
+                            </c:if>
+                        </h:form>
+                  </h:panelGroup>
+                </div>
+                
+        <h:panelGroup layout="block" id="script" class="script">        
+        <script type="text/javascript">
+	//<![CDATA[
+	doAnimations();
+	
+	function doAnimations() {
+		var timeoutPlayer2 = 0;
+
+                if(#{lc.gc.round != 1})
+                {
+			setPlayersToLastPosition();			
+			timeoutPlayer2 = animatePlayer1();
+			animatePlayer2(timeoutPlayer2);			
+                }			
+	}
+	
+	function setPlayersToLastPosition() {
+		if(player1ReachedOil()) {
+			$("#player1").appendTo(getFieldId(#{lc.gc.player1.getPositionMinusT(2)}));
+		} else if(player1Moved()) {
+			$("#player1").appendTo(getFieldId(#{lc.gc.player1.getPositionMinusT(1)}));
+		}
+                if(#{lc.gc.computerScore != 0})
+                {
+			if(player2ReachedOil()) {
+				$("#player2").appendTo(getFieldId(#{lc.gc.player2.getPositionMinusT(2)}));
+			} 
+                        else if(player2Moved()) {
+				$("#player2").appendTo(getFieldId(#{lc.gc.player2.getPositionMinusT(1)}));
+			}
+		}
+	}
+	
+	function animatePlayer1() {
+		var animationTime = 0;
+		if(player1ReachedOil()) {
+			doDoubleMove("#player1", getFieldId(#{lc.gc.player1.getPositionMinusT(1)}), getFieldId(#{lc.gc.player1.getPositionMinusT(0)}));
+			animationTime = 1000;
+		} else if(player1Moved()) {
+			doSingleMove("#player1", getFieldId(#{lc.gc.player1.getPositionMinusT(0)}));
+			animationTime = 400;
+		}
+		return animationTime;
+	}
+	
+	function animatePlayer2(timeoutPlayer2) {
+                if(#{lc.gc.computerScore == 0})
+                {
+			$("#player2").appendTo(getFieldId(#{lc.gc.player2.getPositionMinusT(0)}));
+		}
+                else
+                {
+			if(player2ReachedOil()) {
+				setTimeout(doDoubleMove, timeoutPlayer2, "#player2", getFieldId(#{lc.gc.player2.getPositionMinusT(1)}), getFieldId(#{lc.gc.player2.getPositionMinusT(0)}));
+			} else if(player2Moved()) {
+				setTimeout(doSingleMove, timeoutPlayer2, "#player2", getFieldId(#{lc.gc.player2.getPositionMinusT(0)}));
+			}
+		}
+	}
+	
+	function player1ReachedOil() {
+            return (#{lc.gc.player1.getPositionMinusT(1) > lc.gc.player1.getPositionMinusT(0)});
+	}
+	
+	function player1Moved() {
+            return (#{lc.gc.player1.getPositionMinusT(1) < lc.gc.player1.getPositionMinusT(0)});
+	}
+	
+	function player2ReachedOil() {
+            return (#{lc.gc.player2.getPositionMinusT(1) > lc.gc.player2.getPositionMinusT(0)});
+	}
+	
+	function player2Moved() {
+            return (#{lc.gc.player2.getPositionMinusT(1) < lc.gc.player2.getPositionMinusT(0)});
+	}
+	
+	function getFieldId(fieldindex) {
+		if(fieldindex == 6) {
+			return "#finish_road";
+		} else if(fieldindex > 0 && fieldindex < 6 ){
+			return "#road_" + fieldindex;
+		} 
+		return "#start_road";
+	}
+	
+	function doSingleMove(playerId, fieldId) {
+		$(playerId).fadeOut(200, function() {
+		    $(playerId).appendTo(fieldId);
+		    $(playerId).fadeIn(200);
+		});
+	}
+	
+	function doDoubleMove(playerId, fieldId1, fieldId2) {
+		$(playerId).fadeOut(200, function() {
+		    $(playerId).appendTo(fieldId1);
+		    $(playerId).fadeIn(200, function() {
+		    	$(playerId).fadeOut(200, function() {
+				    $(playerId).appendTo(fieldId2);
+				    $(playerId).fadeIn(200);
+		    	});
+		    });
+		});
+	}
+	
+	//]]>
+	</script>
+        </h:panelGroup>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

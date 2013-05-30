@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name="navigation">
+                <ul>
+                    <li><h:link outcome="index" value="#{msg.backtologin}"/></li>
+                </ul>
+            </ui:define>
+            <ui:define name="main-area">
+                <div id="content">
+                    <h2>#{msg.register}</h2>
+                    <p>#{msg.fillin}</p>
+                    <h:form>
+                            <h3>#{msg.persdatahead}</h3>
+                            <p>
+						
+                            
+                                        <h:outputLabel class="registerform" for="firstname" value="#{msg.firstname}"/>
+                                        <h:inputText required="true" id="firstname" label="#{msg.firstname}" value="#{rc.newplayer.firstname}">
+                                            <f:validateRegex pattern="[A-Za-z][A-Za-z]*"/>
+                                        </h:inputText>
+                                        <h:messages class="validation_error" for="firstname"  showDetail="true" showSummary="false"/>
+                            </p>
+                            <p>
+                                    
+                                        <h:outputLabel class="registerform" for="lastname" value="#{msg.lastname}"/>
+                                        <h:inputText required="true" id="lastname" label="#{msg.lastname}" value="#{rc.newplayer.lastname}">
+                                            <f:validateRegex pattern="[A-Za-z][A-Za-z]*"/>
+                                        </h:inputText>
+                                        <h:messages class="validation_error" for="lastname" showDetail="true" showSummary="false"/>
+                                       
+                            </p>
+                            <p>      
+                                        <h:outputLabel class="registerform" for="dateofbirth" value="#{msg.birthdate}"/>
+                                        <h:inputText required="true" id="dateofbirth" label="#{msg.birthdate}" value="#{rc.newplayer.birthday}" validator="#{rc.validateBirthday}">
+                                        </h:inputText>
+                                        <h:messages class="validation_error" for="dateofbirth" showDetail="true" showSummary="false"/>
+                                       
+                            </p>
+                            <p>
+                                        <h:outputLabel class="registerform" for="sex" value="#{msg.sex}"/>
+                                        <h:selectOneMenu id="sex" label="#{msg.sex}" value="#{rc.newplayer.sex}"  >
+                                            <f:selectItem itemValue="w" itemLabel="#{msg.female}"/>
+                                            <f:selectItem itemValue="m" itemLabel="#{msg.male}"/>
+                                        </h:selectOneMenu>
+                                   
+                            </p>
+                        
+                        
+                        <h3>#{msg.logindatahead}</h3>
+                        <div class="formblock">
+                            <p>
+                                    <h:outputLabel class="registerform" for="username" value="#{msg.username}"/>
+                                    <h:inputText required="true"  id="username" label="#{msg.username}" value="#{rc.newplayer.name}">
+                                        <f:validateRegex pattern="[A-Za-z][A-Za-z]*"/>
+                                    </h:inputText>
+                                    <h:messages class="validation_error" for="username" showDetail="true" showSummary="false"/>
+                                   <br/>
+                               </p>
+                            <p> 
+                                    <h:outputLabel class="registerform" for="password" value="#{msg.password}"/>
+                                    <h:inputSecret required="true"  id="password" label="#{msg.password}" value="#{rc.newplayer.password}">
+                                        <f:validateLength minimum="2"/>
+                                        <f:validateRegex pattern="[A-Za-z0-9]*([A-Za-z][0-9]|[0-9][A-Za-z])[A-Za-z0-9]*"/>
+                                    </h:inputSecret>
+                                    <h:messages class="validation_error" for="password" showDetail="true" showSummary="false"/>
+                            </p> 
+                        </div>
+                        
+                        <div id="terms">    
+                            <h:selectBooleanCheckbox id="showterms" immediate="true" value="#{rc.displayterms}"
+                                                 valueChangeListener="#{rc.displayChanged}" onclick="this.form.submit()"/>
+                            <h:outputLabel styleClass="Float" for="showpersonaldata" value="#{msg.showterms}"/>
+                        </div>
+                        
+                        <h:panelGroup rendered="#{rc.displayterms}">
+                            <h:outputText value="#{msg.terms} "/>
+                        </h:panelGroup>
+                        
+    
+                        <div id="buttons">
+                            <h:commandButton value="#{msg.regbutton}" accesskey="r" action="#{rc.register}" rendered="#{!rc.registrationsuccessful}"/>
+                        </div>
+                        <h:panelGroup rendered="#{rc.registrationsuccessful}">
+                            <h:outputText value="#{msg.successgoto} "/>
+                            <h:link value="#{msg.login}" accesskey="l" outcome="index"/>
+                        </h:panelGroup>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

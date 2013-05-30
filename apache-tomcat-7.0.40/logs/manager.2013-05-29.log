@@ -1,0 +1,12 @@
+Mai 29, 2013 10:48:28 AM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Associated with Deployer 'Catalina:type=Deployer,host=localhost'
+Mai 29, 2013 10:48:28 AM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Global resources are available
+Mai 29, 2013 10:48:28 AM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Mai 29, 2013 10:48:28 AM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Mai 29, 2013 10:48:28 AM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: install: Installing context configuration at 'file:/var/folders/rj/1q9yy9w52_17h1g4j1vt3kb80000gn/T/context4235128548248730968.xml'
+Mai 29, 2013 10:48:36 AM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: start: Starting web application '/lab4'
