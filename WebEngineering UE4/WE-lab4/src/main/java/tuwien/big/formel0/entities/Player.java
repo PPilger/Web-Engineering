@@ -1,16 +1,27 @@
 package tuwien.big.formel0.entities;
 
+import java.io.Serializable;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.NoneScoped;
+import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Id;
+import javax.persistence.Persistence;
 
 @ManagedBean(name = "player")
 @NoneScoped
-public class Player {
+@Entity
+public class Player implements Serializable {
 
     private String firstname = null;
     private String lastname = null;
+    
+    @Id
     private String name = null;
     private String password = null;
+    
     private String birthday = null;
     private String sex = null;
 
@@ -102,5 +113,10 @@ public class Player {
      */
     public void setSex(String sex) {
         this.sex = sex;
+    }
+    
+    @Override
+    public String toString() {
+        return name;
     }
 }

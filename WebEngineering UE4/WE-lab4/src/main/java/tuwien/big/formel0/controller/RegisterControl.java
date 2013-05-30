@@ -4,6 +4,7 @@ import tuwien.big.formel0.utilities.Utility;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -12,6 +13,11 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.validator.ValidatorException;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import tuwien.big.formel0.entities.Player;
 import tuwien.big.formel0.entities.RegisteredPlayerPool;
 
@@ -39,7 +45,7 @@ public class RegisterControl {
 
     public String register() {
         boolean success = getRpp().addPlayer(newplayer);
-
+        
         if (success == true) {
             registrationsuccessful = true;
         }

@@ -1,10 +1,14 @@
 package tuwien.big.formel0.controller;
 
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
 import tuwien.big.formel0.entities.Player;
 import tuwien.big.formel0.entities.RegisteredPlayerPool;
