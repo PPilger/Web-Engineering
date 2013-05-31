@@ -18,7 +18,7 @@ limitations under the License.
   <persistence-unit name="lab4" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <non-jta-data-source>java:comp/env/jdbc/lab4</non-jta-data-source>
-    <class>tuwien.big.formel0.entities.Player</class>
+    <class>formel0api.model.UserData</class>
     <!--<class>tuwien.big.formel0.picasa.RaceDriver</class>-->
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>

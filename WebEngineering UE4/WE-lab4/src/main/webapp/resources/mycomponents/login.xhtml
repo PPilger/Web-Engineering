@@ -1,28 +1,44 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<?xml version="1.0" encoding="US-ASCII"?>
+<!--
+Copyright 2013 kletzi.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:composite="http://java.sun.com/jsf/composite">
-
-    <!-- INTERFACE -->
-    <composite:interface>
-        <composite:attribute name="name" required="false"/>
-        <composite:attribute name="password" required="false"/>
-        <composite:attribute name="action" method-signature="java.lang.String f()" required="true"/>
-    </composite:interface>
-
-    <!-- IMPLEMENTATION -->
-    <composite:implementation>
-        <h:form id="form">
-            <h:panelGrid>
-                <h:outputLabel value="#{msg.name}" for="name"/>
-                <h:inputText id="name" value="#{cc.attrs.name}"/>
-                <h:outputLabel value="#{msg.password}"  for="password"/>
-                <h:inputSecret id="password" value="#{cc.attrs.password}"/>
-                <h:commandButton id="submit" value="#{msg.login}" action="#{cc.attrs.action}"/>
-            </h:panelGrid>
-        </h:form>
-    </composite:implementation>
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <head>
+        <title>#{msg.loginFormTitle}</title>
+    </head>
+    <body>
+        <cc:interface>
+            <cc:attribute name="name" />
+            <cc:attribute name="password" />
+            <cc:attribute name="action" method-signature="java.lang.String login()"/>
+        </cc:interface>
+        <cc:implementation>
+            <h:form id="form">
+                <h:panelGrid id="gridUserData" columns="2">
+                    <h:outputLabel value="Name" for="name" class="registerform"/>
+                    <h:inputText id="name" value="#{cc.attrs.name}" />
+                    <h:outputLabel value="Password" for="password" />
+                    <h:inputSecret id="password" value="#{cc.attrs.password}" redisplay="false"/>
+                    
+                    <h:commandButton id="submit" value="Login" action="#{cc.attrs.action}"/>
+                    <h:message id="login_messages" for="submit" />
+                </h:panelGrid>
+            </h:form>
+        </cc:implementation>
+    </body>
 </html>

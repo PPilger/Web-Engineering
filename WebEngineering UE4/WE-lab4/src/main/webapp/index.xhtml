@@ -1,21 +1,47 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:mc="http://java.sun.com/jsf/composite/mycomponents"
-      xmlns:h="http://java.sun.com/jsf/html">
 
-    <body>     
-        <ui:composition template="/WEB-INF/templates/template.xhtml">
-            <ui:define name="navigation">
-                <ul>
-                    <li><a id="register" href="#{facesContext.externalContext.requestContextPath}/register.xhtml" tabindex="1">#{msg.register}</a></li>
-                </ul>
-            </ui:define>
-            <ui:define name="main-area">
-                <mc:login id="login" name="#{lc.name}" password="#{lc.password}" action="#{lc.login}"/>
-                <h:messages id="login_messages" for="login" errorClass="error" showDetail="true" showSummary="false"/>
-            </ui:define>
-        </ui:composition>
-    </body>
-</html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" locale="#{facesContext.externalContext.requestLocale}">
+    <f:loadBundle basename="i18n" var="msg" />
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="#{msg.lang}" xml:lang="#{msg.lang}" 
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:ui="http://java.sun.com/jsf/facelets"
+          xmlns:mc="http://java.sun.com/jsf/composite/mycomponents">
+        <h:head>
+            <ui:insert name="title">
+                <title>#{msg.indexLoginTitle}</title>
+            </ui:insert>
+            <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+            <link rel="stylesheet" type="text/css" href="resources/styles/screen.css" />
+            <script type="text/javascript" src="resources/js/jquery.js" />
+        </h:head>
+        <h:body>
+            <div id="container">
+                <div id="bordercontainer">
+                    <div id="header">
+                        <div id="header_left"><h1 class="accessibility">#{msg.mainHead}</h1></div>
+                        <div id="header_right"></div>
+                    </div>
+                    <div id="navigation">
+                        <h2 class="accessibility">#{msg.mainNavigation}</h2>
+                        <ui:insert name="navigation">
+                            <h:form id="navForm">
+                                <ul>
+                                    <li><h:link id="register" outcome="register.xhtml" tabindex="1">#{msg.indexRegister}</h:link></li>
+                                </ul>
+                            </h:form>
+                        </ui:insert>
+                    </div>
+                    <ui:insert name="content">
+                        <div id="content">
+                            <mc:login id="login" name="#{loginBean.login.username}" password="#{loginBean.login.password}" action="#{loginBean.login()}"/>
+                        </div>
+                    </ui:insert>
+                </div>
+                <div id="footer">
+                    #{msg.mainFooter}
+                </div>
+            </div>
+        </h:body>
+    </html>
+</f:view>
