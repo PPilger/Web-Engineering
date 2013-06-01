@@ -1,0 +1,12 @@
+Mai 30, 2013 9:10:17 PM org.apache.catalina.core.ApplicationContext log
+INFO: ContextListener: contextInitialized()
+Mai 30, 2013 9:10:17 PM org.apache.catalina.core.ApplicationContext log
+INFO: SessionListener: contextInitialized()
+Mai 30, 2013 9:10:17 PM org.apache.catalina.core.ApplicationContext log
+INFO: ContextListener: attributeAdded('org.apache.jasper.compiler.TldLocationsCache', 'org.apache.jasper.compiler.TldLocationsCache@341b168b')
+Mai 30, 2013 9:10:30 PM org.apache.catalina.core.ApplicationContext log
+INFO: No state saving method defined, assuming default server state saving
+Mai 30, 2013 9:12:11 PM org.apache.catalina.core.ApplicationContext log
+INFO: SessionListener: contextDestroyed()
+Mai 30, 2013 9:12:11 PM org.apache.catalina.core.ApplicationContext log
+INFO: ContextListener: contextDestroyed()
