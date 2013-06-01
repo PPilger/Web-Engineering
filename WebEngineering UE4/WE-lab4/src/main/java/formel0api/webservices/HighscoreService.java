@@ -65,7 +65,7 @@ public class HighscoreService implements Serializable {
         }
     }
 
-    public boolean postHighscore(Game game) {
+    public String postHighscore(Game game) {
         SOAPConnection con = null;
         try {
             con = connectionFactory.createConnection();
@@ -89,18 +89,21 @@ public class HighscoreService implements Serializable {
 
             //send message
             SOAPMessage reply = con.call(msg, url);
-
+			String UUID = "ERROR";
+			
             try {
                 System.out.println();
                 System.out.println("SOAP Reply:");
-                reply.writeTo(System.out);
+                SOAPElement elem;
+				elem = (SOAPElement) reply.getSOAPBody().getChildElements(new QName(dataNS, "HighScoreResponse")).next();
+				UUID = elem.getValue();
                 System.out.println();
                 System.out.flush();
-            } catch (IOException ex) {
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
 
-            return true;
+            return UUID;
         } catch (SOAPException ex) {
             ex.printStackTrace();
         } finally {
@@ -113,7 +116,7 @@ public class HighscoreService implements Serializable {
             }
         }
 
-        return false;
+        return "ERROR";
     }
 
     private void fillMessageBody(SOAPBody body, Game data) throws SOAPException {

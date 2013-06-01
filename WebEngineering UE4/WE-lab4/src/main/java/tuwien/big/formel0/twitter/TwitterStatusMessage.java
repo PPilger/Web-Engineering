@@ -1,6 +1,13 @@
 package tuwien.big.formel0.twitter;
 
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import twitter4j.Status;
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
+import twitter4j.auth.AccessToken;
 
 
 /**
@@ -13,6 +20,13 @@ public class TwitterStatusMessage {
 	private String from;
 	private String uuid;
 	private Date dateTime;
+	
+	//Twitter specific data
+	//Twitter Url: https://twitter.com/BIGEWA2013
+	private String consumerKey = "GZ6tiy1XyB9W0P4xEJudQ";
+	private String consumerSecret = "gaJDlW0vf7en46JwHAOkZsTHvtAiZ3QUd2mD1x26J9w";
+	private String accessToken = "1366513208-MutXEbBMAVOwrbFmZtj1r4Ih2vcoHGHE2207002";
+	private String accessTokenSecret = "RMPWOePlus3xtURWRVnv1TgrjTyK7Zk33evp4KKyA";
 	
 	
 	public TwitterStatusMessage(String from, String uuid, Date dateTime) {
@@ -44,6 +58,33 @@ public class TwitterStatusMessage {
 		sb.append("User ").append(from).append(" publizierte folgende UUID am Highscoreboard: ");
 		sb.append(uuid);
 		return sb.toString().trim();
+	}
+	
+	/**
+	 * 
+	 */
+	public boolean postOnTwitter() {
+		
+		TwitterFactory factory = new TwitterFactory();
+		Twitter twitter = factory.getInstance();
+		AccessToken accesstoken = new AccessToken(this.accessToken, this.accessTokenSecret);
+		twitter.setOAuthConsumer(this.consumerKey, this.consumerSecret);
+		twitter.setOAuthAccessToken(accesstoken);
+		
+		String statusText = "";
+		boolean bSuccessfull = true;
+		
+		try {
+			Status status = twitter.updateStatus(this.getTwitterPublicationString());
+			statusText = status.getText();
+		} catch (TwitterException ex) {
+			Logger.getLogger(TwitterStatusMessage.class.getName()).log(Level.SEVERE, null, ex);
+			bSuccessfull = false;
+		}
+		
+		System.out.println("Successfully updated the status to [" + statusText + "].");
+		
+		return bSuccessfull;
 	}
 	
 }
