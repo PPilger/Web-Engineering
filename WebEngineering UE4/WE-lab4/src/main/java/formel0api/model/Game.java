@@ -29,6 +29,8 @@ public class Game implements Serializable {
     private int round;
     
     private long spentTime;
+	
+	private String twitterStatus;
     
     private Player player1;
     private Player player2;
@@ -87,4 +89,12 @@ public class Game implements Serializable {
     public void setPlayer2(Player player2) {
         this.player2 = player2;
     }
+	
+	public String getTwitterStatus() {
+		return twitterStatus;
+	}
+
+	public void setTwitterStatus(String twitterStatus) {
+		this.twitterStatus = twitterStatus;
+	}
 }

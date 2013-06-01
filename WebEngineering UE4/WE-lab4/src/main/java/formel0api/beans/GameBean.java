@@ -66,6 +66,8 @@ public class GameBean implements Serializable {
 		}
 		game.setPlayer2(new Player("Super C"));
 		newGame(null);
+		game.setTwitterStatus("");
+		
 		refresh();
 	}
 
@@ -120,7 +122,8 @@ public class GameBean implements Serializable {
 		game.setSpentTime(0);
 		startTime = System.currentTimeMillis();
 		gameOver = false;
-
+		game.setTwitterStatus("");
+		
 		refresh();
 	}
 
@@ -144,10 +147,12 @@ public class GameBean implements Serializable {
 				
 				if(bSucessfull == true) {
 					//Erfolgreich auf Twitter gepostet
-					
+					game.setTwitterStatus("UUID " + UUID + " " + MyResourceBundle.getString("twitterOK"));
+					System.out.println("Twitter Post successful");
 				} else {
 					//Nicht erfolgreich auf Twitter gepostet
-					
+					game.setTwitterStatus(MyResourceBundle.getString("twitterFail"));
+					System.out.println("Twitter fehler");
 				}
 			}
 

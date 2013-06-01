@@ -77,7 +77,7 @@ public class TwitterStatusMessage {
 		try {
 			Status status = twitter.updateStatus(this.getTwitterPublicationString());
 			statusText = status.getText();
-		} catch (TwitterException ex) {
+		} catch (Exception ex) {
 			Logger.getLogger(TwitterStatusMessage.class.getName()).log(Level.SEVERE, null, ex);
 			bSuccessfull = false;
 		}

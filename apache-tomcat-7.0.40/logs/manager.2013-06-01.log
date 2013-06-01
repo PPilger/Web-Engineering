@@ -234,3 +234,333 @@ Jun 01, 2013 8:03:20 PM org.apache.catalina.core.ApplicationContext log
 INFO: Manager: list: Listing contexts for virtual host 'localhost'
 Jun 01, 2013 8:03:20 PM org.apache.catalina.core.ApplicationContext log
 INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 8:10:15 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Associated with Deployer 'Catalina:type=Deployer,host=localhost'
+Jun 01, 2013 8:10:15 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Global resources are available
+Jun 01, 2013 8:10:15 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 8:10:15 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 8:10:15 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: undeploy: Undeploying web application at '/lab4'
+Jun 01, 2013 8:10:16 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: install: Installing context configuration at 'file:/var/folders/rj/1q9yy9w52_17h1g4j1vt3kb80000gn/T/context4063202535695381526.xml'
+Jun 01, 2013 9:43:26 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Associated with Deployer 'Catalina:type=Deployer,host=localhost'
+Jun 01, 2013 9:43:26 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Global resources are available
+Jun 01, 2013 9:43:26 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:43:26 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:43:26 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: undeploy: Undeploying web application at '/lab4'
+Jun 01, 2013 9:43:27 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: install: Installing context configuration at 'file:/var/folders/rj/1q9yy9w52_17h1g4j1vt3kb80000gn/T/context4625940128990979089.xml'
+Jun 01, 2013 9:43:32 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: start: Starting web application '/lab4'
+Jun 01, 2013 9:49:23 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:49:23 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:49:23 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: undeploy: Undeploying web application at '/lab4'
+Jun 01, 2013 9:49:24 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: install: Installing context configuration at 'file:/var/folders/rj/1q9yy9w52_17h1g4j1vt3kb80000gn/T/context4579678035619217814.xml'
+Jun 01, 2013 9:49:30 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: start: Starting web application '/lab4'
+Jun 01, 2013 9:49:45 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:49:45 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 9:49:55 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:49:55 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 9:49:58 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:49:58 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 9:51:05 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:51:05 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 9:51:16 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:51:16 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 9:51:34 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:51:34 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 9:51:37 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:51:37 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 9:52:46 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:52:46 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 9:52:58 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:52:58 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 9:53:02 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:53:02 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 9:53:34 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Associated with Deployer 'Catalina:type=Deployer,host=localhost'
+Jun 01, 2013 9:53:34 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Global resources are available
+Jun 01, 2013 9:53:34 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:53:34 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:53:34 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: undeploy: Undeploying web application at '/lab4'
+Jun 01, 2013 9:53:35 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: install: Installing context configuration at 'file:/var/folders/rj/1q9yy9w52_17h1g4j1vt3kb80000gn/T/context7258443337081366125.xml'
+Jun 01, 2013 9:53:41 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: start: Starting web application '/lab4'
+Jun 01, 2013 9:54:31 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:54:32 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 9:54:55 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:54:55 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 9:55:15 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:55:15 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 9:56:08 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:56:08 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 9:56:36 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:56:36 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 9:56:58 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:56:58 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 9:58:59 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:59:15 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:59:58 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Associated with Deployer 'Catalina:type=Deployer,host=localhost'
+Jun 01, 2013 9:59:58 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Global resources are available
+Jun 01, 2013 9:59:58 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:59:58 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 9:59:58 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: undeploy: Undeploying web application at '/lab4'
+Jun 01, 2013 9:59:59 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: install: Installing context configuration at 'file:/var/folders/rj/1q9yy9w52_17h1g4j1vt3kb80000gn/T/context3731798692312835659.xml'
+Jun 01, 2013 10:00:03 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: start: Starting web application '/lab4'
+Jun 01, 2013 10:01:51 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:02:42 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Associated with Deployer 'Catalina:type=Deployer,host=localhost'
+Jun 01, 2013 10:02:42 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Global resources are available
+Jun 01, 2013 10:02:43 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:02:43 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:02:43 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: undeploy: Undeploying web application at '/lab4'
+Jun 01, 2013 10:02:44 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: install: Installing context configuration at 'file:/var/folders/rj/1q9yy9w52_17h1g4j1vt3kb80000gn/T/context44000590369612626.xml'
+Jun 01, 2013 10:02:47 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: start: Starting web application '/lab4'
+Jun 01, 2013 10:09:37 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:10:37 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:10:37 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:11:10 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Associated with Deployer 'Catalina:type=Deployer,host=localhost'
+Jun 01, 2013 10:11:10 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Global resources are available
+Jun 01, 2013 10:11:10 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:11:10 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:11:10 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: undeploy: Undeploying web application at '/lab4'
+Jun 01, 2013 10:11:11 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: install: Installing context configuration at 'file:/var/folders/rj/1q9yy9w52_17h1g4j1vt3kb80000gn/T/context6584990561177110628.xml'
+Jun 01, 2013 10:11:18 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: start: Starting web application '/lab4'
+Jun 01, 2013 10:17:18 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:18:06 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Associated with Deployer 'Catalina:type=Deployer,host=localhost'
+Jun 01, 2013 10:18:06 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Global resources are available
+Jun 01, 2013 10:18:06 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:18:06 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:18:06 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: undeploy: Undeploying web application at '/lab4'
+Jun 01, 2013 10:18:07 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: install: Installing context configuration at 'file:/var/folders/rj/1q9yy9w52_17h1g4j1vt3kb80000gn/T/context7428752117937154052.xml'
+Jun 01, 2013 10:18:12 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: start: Starting web application '/lab4'
+Jun 01, 2013 10:22:10 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Associated with Deployer 'Catalina:type=Deployer,host=localhost'
+Jun 01, 2013 10:22:10 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Global resources are available
+Jun 01, 2013 10:22:10 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:22:10 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:22:10 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: undeploy: Undeploying web application at '/lab4'
+Jun 01, 2013 10:22:11 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: install: Installing context configuration at 'file:/var/folders/rj/1q9yy9w52_17h1g4j1vt3kb80000gn/T/context3426452292731015097.xml'
+Jun 01, 2013 10:22:14 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: start: Starting web application '/lab4'
+Jun 01, 2013 10:24:21 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:24:21 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:24:26 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:24:26 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:24:36 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:24:36 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:27:09 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:27:09 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:27:16 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:27:16 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:27:31 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:27:31 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:28:03 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:28:03 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:28:07 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:28:07 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:28:43 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:28:43 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:28:59 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:28:59 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:29:14 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:29:14 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:29:17 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:29:17 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:29:55 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:29:55 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:29:58 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:29:58 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:30:32 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Associated with Deployer 'Catalina:type=Deployer,host=localhost'
+Jun 01, 2013 10:30:32 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Global resources are available
+Jun 01, 2013 10:30:32 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:30:32 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:30:32 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: undeploy: Undeploying web application at '/lab4'
+Jun 01, 2013 10:30:33 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: install: Installing context configuration at 'file:/var/folders/rj/1q9yy9w52_17h1g4j1vt3kb80000gn/T/context6655633602952440659.xml'
+Jun 01, 2013 10:30:37 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: start: Starting web application '/lab4'
+Jun 01, 2013 10:31:56 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:31:56 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:32:58 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:32:58 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:33:06 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:33:06 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:35:20 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:35:20 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:35:50 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Associated with Deployer 'Catalina:type=Deployer,host=localhost'
+Jun 01, 2013 10:35:50 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Global resources are available
+Jun 01, 2013 10:35:50 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:35:50 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:35:50 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: undeploy: Undeploying web application at '/lab4'
+Jun 01, 2013 10:35:51 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: install: Installing context configuration at 'file:/var/folders/rj/1q9yy9w52_17h1g4j1vt3kb80000gn/T/context8483622113557549820.xml'
+Jun 01, 2013 10:35:57 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: start: Starting web application '/lab4'
+Jun 01, 2013 10:38:45 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Associated with Deployer 'Catalina:type=Deployer,host=localhost'
+Jun 01, 2013 10:38:45 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Global resources are available
+Jun 01, 2013 10:38:45 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:38:45 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:38:45 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: undeploy: Undeploying web application at '/lab4'
+Jun 01, 2013 10:38:46 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: install: Installing context configuration at 'file:/var/folders/rj/1q9yy9w52_17h1g4j1vt3kb80000gn/T/context2728214215742660731.xml'
+Jun 01, 2013 10:38:49 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: start: Starting web application '/lab4'
+Jun 01, 2013 10:42:57 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:42:57 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: restart: Reloading web application '/lab4'
+Jun 01, 2013 10:43:31 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Associated with Deployer 'Catalina:type=Deployer,host=localhost'
+Jun 01, 2013 10:43:31 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: init: Global resources are available
+Jun 01, 2013 10:43:31 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:43:32 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: list: Listing contexts for virtual host 'localhost'
+Jun 01, 2013 10:43:32 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: undeploy: Undeploying web application at '/lab4'
+Jun 01, 2013 10:43:33 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: install: Installing context configuration at 'file:/var/folders/rj/1q9yy9w52_17h1g4j1vt3kb80000gn/T/context2402995166592847072.xml'
+Jun 01, 2013 10:43:38 PM org.apache.catalina.core.ApplicationContext log
+INFO: Manager: start: Starting web application '/lab4'
