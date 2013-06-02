@@ -1309,3 +1309,6 @@
 0:0:0:0:0:0:0:1 - - [01/Jun/2013:22:44:42 +0200] "GET /lab4/resources/img/wuerfel2.png HTTP/1.1" 200 1891
 0:0:0:0:0:0:0:1 - - [01/Jun/2013:22:44:48 +0200] "POST /lab4/table.xhtml HTTP/1.1" 200 5518
 0:0:0:0:0:0:0:1 - - [01/Jun/2013:22:44:48 +0200] "GET /lab4/resources/img/wuerfel2.png HTTP/1.1" 200 1891
+127.0.0.1 - - [01/Jun/2013:22:46:06 +0200] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - - [01/Jun/2013:22:46:06 +0200] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - - [01/Jun/2013:22:46:06 +0200] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
