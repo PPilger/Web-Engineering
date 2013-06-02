@@ -15,17 +15,26 @@
  */
 package formel0api.beans;
 
+import com.google.gdata.util.ServiceException;
 import formel0api.model.Login;
 import formel0api.model.UserData;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.model.SelectItem;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import tuwien.big.formel0.picasa.IRaceDriverImpl;
+import tuwien.big.formel0.picasa.IRaceDriverService;
+import tuwien.big.formel0.picasa.RaceDriver;
 
 /**
  *
@@ -36,11 +45,20 @@ import javax.persistence.TypedQuery;
 public class ApplicationBean implements Serializable {
 
     private EntityManager man;
-
+    private List<RaceDriver> temp;
     public ApplicationBean() {
         EntityManagerFactory fac = Persistence.createEntityManagerFactory("lab4");
         man = fac.createEntityManager();
+        IRaceDriverService raceDriver = new IRaceDriverImpl();
+        try {
+            this.temp = raceDriver.getRaceDrivers();
+        } catch (IOException ex) {
+            Logger.getLogger(ApplicationBean.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ServiceException ex) {
+            Logger.getLogger(ApplicationBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
+        
         //Add test player
         UserData tp = new UserData();
         tp.setUsername("t");
@@ -62,7 +80,18 @@ public class ApplicationBean implements Serializable {
             System.out.println("already registered");
         }
     }
-
+    public List<SelectItem> getRaceDrivers() throws ServiceException, IOException {
+    
+        List<SelectItem> s = new ArrayList<SelectItem>();
+        
+        for(RaceDriver d : temp) {
+            SelectItem item = new SelectItem();
+            item.setLabel(d.getName());
+            item.setValue(d.getName());
+            s.add(item);
+        }
+        return s;
+    }
     public boolean isRegistered(UserData user) {
         System.out.println("isRegistered " + user);
 

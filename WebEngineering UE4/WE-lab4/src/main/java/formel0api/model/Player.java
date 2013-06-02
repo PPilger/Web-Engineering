@@ -11,6 +11,7 @@
 package formel0api.model;
 
 import java.io.Serializable;
+import tuwien.big.formel0.picasa.RaceDriver;
 
 /**
  * Class representing a player playing in a {@link Game}.
@@ -22,6 +23,7 @@ public class Player implements Serializable {
     private int position;
     private int nextPosition;
     private UserData user;
+    private RaceDriver raceDriver;
 
     public Player(String name) {
         this.name = name;
@@ -70,5 +72,12 @@ public class Player implements Serializable {
 
     public void setUser(UserData user) {
         this.user = user;
+    }
+    public RaceDriver getRaceDriver() {
+        return raceDriver;
+    }
+
+    public void setRaceDriver(RaceDriver raceDriver) {
+        this.raceDriver = raceDriver;
     }
 }

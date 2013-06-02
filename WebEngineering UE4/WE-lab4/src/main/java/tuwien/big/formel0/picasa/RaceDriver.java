@@ -1,12 +1,18 @@
 package tuwien.big.formel0.picasa;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Represents a race driver from Picasa
  * @author pl
  *
  */
-public class RaceDriver {
+@Entity(name="Avatar")
+public class RaceDriver implements Serializable {
 
+    @Id
     private String name;
     private String url;
     private String wikiUrl;

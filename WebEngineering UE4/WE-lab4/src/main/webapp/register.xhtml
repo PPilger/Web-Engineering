@@ -56,6 +56,13 @@
                                 </h:selectOneMenu>
                                 <h:message id="sex_messages" for="sex"/>
                             </div>
+                            
+                            <div>
+                                <h:outputLabel value="#{msg.registerAvatar}" for="avatar" class="registerform" />
+                                <h:selectOneMenu id="avatar" value="#{userBean.user.raceDriver}" required="true" requiredMessage="#{msg.registerEmptyAvatar}">
+                                    <f:selectItems itemValue="#{applicationBean.raceDrivers}" itemLabel="#{applicationBean.raceDrivers}"/>
+                                </h:selectOneMenu>
+                            </div>
                         </fieldset>
 
                         <h3>#{msg.registerLoginData}</h3>

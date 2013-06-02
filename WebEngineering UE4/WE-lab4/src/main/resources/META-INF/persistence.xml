@@ -19,7 +19,7 @@ limitations under the License.
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <non-jta-data-source>java:comp/env/jdbc/lab4</non-jta-data-source>
     <class>formel0api.model.UserData</class>
-    <!--<class>tuwien.big.formel0.picasa.RaceDriver</class>-->
+    <class>tuwien.big.formel0.picasa.RaceDriver</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>

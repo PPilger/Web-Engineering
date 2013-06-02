@@ -19,6 +19,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import tuwien.big.formel0.picasa.RaceDriver;
 
 /**
  *
@@ -34,6 +36,8 @@ public class UserData implements Serializable {
     @Id
     private String username;
     private String password;
+    @OneToOne
+    private RaceDriver raceDriver;
 
     public String getFirstname() {
         return firstname;
@@ -82,9 +86,17 @@ public class UserData implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+    public RaceDriver getRaceDriver() {
+        return raceDriver;
+    }
+
+    public void setRaceDriver(RaceDriver raceDriver) {
+        this.raceDriver = raceDriver;
+    }
 
     @Override
     public String toString() {
         return username + "/" + password;
     }
+
 }
