@@ -1,0 +1,41 @@
+Jun 02, 2013 3:04:09 PM org.apache.catalina.core.ApplicationContext log
+INFO: ContextListener: contextInitialized()
+Jun 02, 2013 3:04:09 PM org.apache.catalina.core.ApplicationContext log
+INFO: SessionListener: contextInitialized()
+Jun 02, 2013 3:04:09 PM org.apache.catalina.core.ApplicationContext log
+INFO: ContextListener: attributeAdded('org.apache.jasper.compiler.TldLocationsCache', 'org.apache.jasper.compiler.TldLocationsCache@5947fe65')
+Jun 02, 2013 3:04:24 PM org.apache.catalina.core.ApplicationContext log
+INFO: No state saving method defined, assuming default server state saving
+Jun 02, 2013 3:07:56 PM org.apache.catalina.core.ApplicationContext log
+INFO: SessionListener: contextDestroyed()
+Jun 02, 2013 3:07:56 PM org.apache.catalina.core.ApplicationContext log
+INFO: ContextListener: contextDestroyed()
+Jun 02, 2013 3:07:56 PM org.apache.catalina.session.StandardSession writeObject
+WARNING: Cannot serialize session attribute gameBean for session 38C3BEF60791630A9077E53B93C95046
+java.io.NotSerializableException: com.sun.xml.internal.messaging.saaj.client.p2p.HttpSOAPConnectionFactory
+	at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1180)
+	at java.io.ObjectOutputStream.defaultWriteFields(ObjectOutputStream.java:1528)
+	at java.io.ObjectOutputStream.writeSerialData(ObjectOutputStream.java:1493)
+	at java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1416)
+	at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1174)
+	at java.io.ObjectOutputStream.defaultWriteFields(ObjectOutputStream.java:1528)
+	at java.io.ObjectOutputStream.writeSerialData(ObjectOutputStream.java:1493)
+	at java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1416)
+	at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1174)
+	at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:346)
+	at org.apache.catalina.session.StandardSession.writeObject(StandardSession.java:1671)
+	at org.apache.catalina.session.StandardSession.writeObjectData(StandardSession.java:1077)
+	at org.apache.catalina.session.StandardManager.doUnload(StandardManager.java:432)
+	at org.apache.catalina.session.StandardManager.unload(StandardManager.java:353)
+	at org.apache.catalina.session.StandardManager.stopInternal(StandardManager.java:518)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5569)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1575)
+	at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1564)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:166)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+
