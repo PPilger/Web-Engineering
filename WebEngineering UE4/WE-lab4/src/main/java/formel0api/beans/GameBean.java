@@ -42,11 +42,9 @@ public class GameBean implements Serializable {
 	private boolean gameOver = false;
 	private long startTime = System.currentTimeMillis();
 	private UserData user;
-	private HighscoreService highscoreService;
 
 	public GameBean(UserData user) {
 		this.user = user;
-		this.highscoreService = new HighscoreService();
 		init();
 	}
 
@@ -139,6 +137,7 @@ public class GameBean implements Serializable {
 
 			if (gameOver) {
 				//Am Highscore-Board posten
+                                HighscoreService highscoreService = new HighscoreService();
 				String UUID = highscoreService.postHighscore(game);
 				
 				//Auf Twitter posten
