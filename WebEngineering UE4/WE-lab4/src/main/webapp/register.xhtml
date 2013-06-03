@@ -60,7 +60,8 @@
                             <div>
                                 <h:outputLabel value="#{msg.registerAvatar}" for="avatar" class="registerform" />
                                 <h:selectOneMenu id="avatar" value="#{userBean.user.raceDriver}" required="true" requiredMessage="#{msg.registerEmptyAvatar}">
-                                    <f:selectItems value="#{applicationBean.raceDrivers}"/>
+                                    <f:selectItems value="#{applicationBean.raceDrivers}" />
+                                    <f:converter converterId="avatarConverter"/>
                                 </h:selectOneMenu>
                             </div>
                         </fieldset>

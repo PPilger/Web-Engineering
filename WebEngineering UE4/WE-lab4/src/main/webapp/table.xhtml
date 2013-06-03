@@ -68,10 +68,14 @@
                                         <th id="player2NameLabel" class="label">#{msg.tablePlayer2}</th>
                                         <td id="player2Name" class="data"><h:outputText value="#{gameBean.game.player2.name}"/></td>
                                     </tr>
-                                </table> 
+                                </table>
+                                
+                                <a href="#{gameBean.game.player1.user.raceDriver.wikiUrl}">
+                                    <img src="#{gameBean.game.player1.user.raceDriver.url}" alt="#{msg.fotoOf} #{gameBean.game.player1.name}"/>
+                                </a>
 								
-								<h2>#{msg.twitterStatus}</h2>
-								<div class="data"><h:outputText value="#{gameBean.game.twitterStatus}"/></div>
+				<h2>#{msg.twitterStatus}</h2>
+				<div class="data"><h:outputText value="#{gameBean.game.twitterStatus}"/></div>
                             </div>
                         </h:panelGroup>
                         <h:panelGroup id="fieldGroup" layout="block">

@@ -20,9 +20,18 @@ import formel0api.model.Login;
 import formel0api.model.UserData;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.ConverterException;
+import javax.faces.convert.FacesConverter;
+import javax.faces.model.SelectItem;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -71,6 +80,16 @@ public class ApplicationBean implements Serializable {
         System.out.println("race drivers: " + raceDrivers);
 
         return raceDrivers;
+    }
+    
+    public RaceDriver getRaceDriver(String name) {
+        TypedQuery<RaceDriver> query = man.createQuery("from Avatar a where a.name=:name", RaceDriver.class);
+        query.setParameter("name", name);
+        RaceDriver raceDriver = query.getSingleResult();
+
+        System.out.println("race driver: " + raceDriver);
+        
+        return raceDriver;
     }
 
     public boolean isRegistered(UserData user) {
