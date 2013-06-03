@@ -46,19 +46,15 @@ public class ApplicationBean implements Serializable {
 
     private EntityManager man;
     private List<RaceDriver> temp;
+    private IRaceDriverService raceDriver;
+
     public ApplicationBean() {
         EntityManagerFactory fac = Persistence.createEntityManagerFactory("lab4");
         man = fac.createEntityManager();
-        IRaceDriverService raceDriver = new IRaceDriverImpl();
-        try {
-            this.temp = raceDriver.getRaceDrivers();
-        } catch (IOException ex) {
-            Logger.getLogger(ApplicationBean.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ServiceException ex) {
-            Logger.getLogger(ApplicationBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
-        
+        this.raceDriver = new IRaceDriverImpl();
+        loadRaceDriver();
+
         //Add test player
         UserData tp = new UserData();
         tp.setUsername("t");
@@ -72,7 +68,7 @@ public class ApplicationBean implements Serializable {
 
         if (!isRegistered(user)) {
             System.out.println("not registered");
-            
+
             man.getTransaction().begin();
             man.persist(user);
             man.getTransaction().commit();
@@ -80,11 +76,15 @@ public class ApplicationBean implements Serializable {
             System.out.println("already registered");
         }
     }
+
     public List<SelectItem> getRaceDrivers() throws ServiceException, IOException {
-    
+
         List<SelectItem> s = new ArrayList<SelectItem>();
+        TypedQuery<RaceDriver> query = man.createQuery("select r from RaceDriver r", RaceDriver.class);
         
-        for(RaceDriver d : temp) {
+        List<RaceDriver> found = query.getResultList();
+        
+        for (RaceDriver d : found) {
             SelectItem item = new SelectItem();
             item.setLabel(d.getName());
             item.setValue(d.getName());
@@ -92,6 +92,7 @@ public class ApplicationBean implements Serializable {
         }
         return s;
     }
+
     public boolean isRegistered(UserData user) {
         System.out.println("isRegistered " + user);
 
@@ -106,17 +107,32 @@ public class ApplicationBean implements Serializable {
 
     public UserData login(Login login) {
         System.out.println("login " + login);
-        
+
         TypedQuery<UserData> query = man.createQuery("select u from UserData u where u.username=:username and u.password=:password", UserData.class);
         query.setParameter("username", login.getUsername());
         query.setParameter("password", login.getPassword());
         List<UserData> found = query.getResultList();
 
         System.out.println("user found: " + found);
-        
+
         if (found.size() > 0) {
             return found.get(0);
         }
         return null;
+    }
+
+    private void loadRaceDriver() {
+        try {
+            this.temp = this.raceDriver.getRaceDrivers();
+        } catch (IOException ex) {
+            Logger.getLogger(ApplicationBean.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ServiceException ex) {
+            Logger.getLogger(ApplicationBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (RaceDriver driver : temp) {
+            man.getTransaction().begin();
+            man.persist(driver);
+            man.getTransaction().commit();
+        }
     }
 }
