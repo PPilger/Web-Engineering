@@ -59,9 +59,8 @@
                             
                             <div>
                                 <h:outputLabel value="#{msg.registerAvatar}" for="avatar" class="registerform" />
-                                <h:selectOneMenu id="avatar" value="#{userBean.user.raceDriver.name}" required="true" requiredMessage="#{msg.registerEmptyAvatar}">
-                                    <f:selectItems itemValue="#{applicationBean.raceDrivers}" itemLabel="#{applicationBean.raceDrivers}"/>
-                                    <f:selectItems itemValue="#{applicationBean.raceDrivers}" itemLabel="#{applicationBean.raceDrivers}"/>
+                                <h:selectOneMenu id="avatar" value="#{userBean.user.raceDriver}" required="true" requiredMessage="#{msg.registerEmptyAvatar}">
+                                    <f:selectItems value="#{applicationBean.raceDrivers}"/>
                                 </h:selectOneMenu>
                             </div>
                         </fieldset>

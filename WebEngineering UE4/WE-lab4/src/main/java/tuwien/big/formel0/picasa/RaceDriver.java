@@ -44,4 +44,8 @@ public class RaceDriver implements Serializable {
         this.wikiUrl = wikiUrl;
     }   
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }
