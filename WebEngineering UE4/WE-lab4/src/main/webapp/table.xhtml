@@ -70,12 +70,11 @@
                                     </tr>
                                 </table>
                                 
-                                <a href="#{gameBean.game.player1.user.raceDriver.wikiUrl}">
-                                    <img src="#{gameBean.game.player1.user.raceDriver.url}" alt="#{msg.fotoOf} #{gameBean.game.player1.name}"/>
+                                <a id="player1Avatar" class="data" href="#{gameBean.game.player1.user.raceDriver.wikiUrl}" target="_blank">
+                                    <img src="#{gameBean.game.player1.user.raceDriver.url}" alt="#{msg.tableFotoOf} #{gameBean.game.player1.name}"/>
                                 </a>
-								
-				<h2>#{msg.twitterStatus}</h2>
-				<div class="data"><h:outputText value="#{gameBean.game.twitterStatus}"/></div>
+				
+				<div id="twitterStatus" class="data"><h:outputText value="#{gameBean.game.twitterStatus}"/></div>
                             </div>
                         </h:panelGroup>
                         <h:panelGroup id="fieldGroup" layout="block">

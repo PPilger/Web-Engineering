@@ -156,7 +156,7 @@ div.info th.label {
     text-align: left;
 }
 
-div.info td.data, div.data {
+div.info td.data, div.data, a.data {
     color: #fff;
     padding-left: 1em;
     font: 0.8em arial,sans-serif;

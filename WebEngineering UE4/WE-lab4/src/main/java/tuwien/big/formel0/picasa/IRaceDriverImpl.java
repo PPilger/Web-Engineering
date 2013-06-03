@@ -58,9 +58,9 @@ public class IRaceDriverImpl implements IRaceDriverService {
             RaceDriver temp = new RaceDriver();
 
             for (TagEntry tag : photo.getFeed("tag").getTagEntries()) {
-
-                if (tag.getTitle().getPlainText().startsWith("wiki:")) {
-                    temp.setWikiUrl(tag.getTitle().getPlainText().substring(4, tag.getTitle().getPlainText().length() - 1));
+                String title = tag.getTitle().getPlainText();
+                if (title.startsWith("wiki:")) {
+                    temp.setWikiUrl("http://"+title.substring(5, title.length()));
                 }
             }
 
