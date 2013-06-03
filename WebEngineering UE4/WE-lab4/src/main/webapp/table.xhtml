@@ -70,8 +70,8 @@
                                     </tr>
                                 </table>
                                 
-                                <a id="player1Avatar" class="data" href="#{gameBean.game.player1.user.raceDriver.wikiUrl}" target="_blank">
-                                    <img src="#{gameBean.game.player1.user.raceDriver.url}" alt="#{msg.tableFotoOf} #{gameBean.game.player1.name}"/>
+                                <a class="data" href="#" onclick="window.open('#{gameBean.game.player1.user.raceDriver.wikiUrl}')">
+                                    <img id="player1Avatar" src="#{gameBean.game.player1.user.raceDriver.url}" alt="#{msg.tableFotoOf} #{gameBean.game.player1.name}"/>
                                 </a>
 				
 				<div id="twitterStatus" class="data"><h:outputText value="#{gameBean.game.twitterStatus}"/></div>

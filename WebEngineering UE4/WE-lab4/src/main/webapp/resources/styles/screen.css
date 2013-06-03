@@ -162,6 +162,12 @@ div.info td.data, div.data, a.data {
     font: 0.8em arial,sans-serif;
 }
 
+img#player1Avatar {
+    margin-top: 0.8em;
+    font-size: 1.2em;
+    width: 13.4em;
+}
+
 div.field {
     float:left;
     text-align: center;

@@ -19,6 +19,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import tuwien.big.formel0.picasa.RaceDriver;
 
@@ -36,7 +37,7 @@ public class UserData implements Serializable {
     @Id
     private String username;
     private String password;
-    @OneToOne
+    @ManyToOne
     private RaceDriver raceDriver = new RaceDriver();
     public UserData() {
         raceDriver.setName("Michael");
