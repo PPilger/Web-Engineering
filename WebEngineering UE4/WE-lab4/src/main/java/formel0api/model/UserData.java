@@ -37,7 +37,10 @@ public class UserData implements Serializable {
     private String username;
     private String password;
     @OneToOne
-    private RaceDriver raceDriver;
+    private RaceDriver raceDriver = new RaceDriver();
+    public UserData() {
+        raceDriver.setName("Michael");
+    }
 
     public String getFirstname() {
         return firstname;

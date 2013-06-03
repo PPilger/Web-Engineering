@@ -78,13 +78,16 @@ public class ApplicationBean implements Serializable {
     }
 
     public List<SelectItem> getRaceDrivers() throws ServiceException, IOException {
-
+        System.out.println("Enter getRaceDrivers in ApplicationBean");
         List<SelectItem> s = new ArrayList<SelectItem>();
-        TypedQuery<RaceDriver> query = man.createQuery("select r from RaceDriver r", RaceDriver.class);
+        TypedQuery<RaceDriver> query = man.createQuery("select * from RaceDriver r", RaceDriver.class);
         
         List<RaceDriver> found = query.getResultList();
         
         for (RaceDriver d : found) {
+            System.out.println("!!!Wiki aus DB:" + d.getWikiUrl());
+            System.out.println("!!!Rennfahrer aus DB:" + d.getName());
+            System.out.println("!!!Link aus DB:" + d.getUrl());
             SelectItem item = new SelectItem();
             item.setLabel(d.getName());
             item.setValue(d.getName());
@@ -122,6 +125,8 @@ public class ApplicationBean implements Serializable {
     }
 
     private void loadRaceDriver() {
+        System.out.println("Load race drivers");
+
         try {
             this.temp = this.raceDriver.getRaceDrivers();
         } catch (IOException ex) {
@@ -130,6 +135,10 @@ public class ApplicationBean implements Serializable {
             Logger.getLogger(ApplicationBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         for (RaceDriver driver : temp) {
+            System.out.println("!!!Wiki:" + driver.getWikiUrl());
+            System.out.println("!!!Rennfahrer:" + driver.getName());
+            System.out.println("!!!Link:" + driver.getUrl());
+            
             man.getTransaction().begin();
             man.persist(driver);
             man.getTransaction().commit();

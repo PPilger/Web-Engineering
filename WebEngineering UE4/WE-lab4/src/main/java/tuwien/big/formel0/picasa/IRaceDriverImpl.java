@@ -38,16 +38,9 @@ import javax.persistence.Persistence;
  */
 public class IRaceDriverImpl implements IRaceDriverService {
 
-    private EntityManager man;
-
-    public IRaceDriverImpl() {
-        EntityManagerFactory fac = Persistence.createEntityManagerFactory("lab4");
-        man = fac.createEntityManager();
-    }
-
     @Override
     public List<RaceDriver> getRaceDrivers() throws IOException, ServiceException {
-        System.out.println("Load race drivers");
+        System.out.println("Get race drivers in IRaceDriverImpl");
 
         PicasawebService myService = new PicasawebService("example");
 
@@ -67,7 +60,6 @@ public class IRaceDriverImpl implements IRaceDriverService {
             for (TagEntry tag : photo.getFeed("tag").getTagEntries()) {
 
                 if (tag.getTitle().getPlainText().startsWith("wiki:")) {
-                    System.out.println("Wiki:" + tag.getTitle().getPlainText().substring(4, tag.getTitle().getPlainText().length() - 1));
                     temp.setWikiUrl(tag.getTitle().getPlainText().substring(4, tag.getTitle().getPlainText().length() - 1));
                 }
             }
@@ -77,8 +69,9 @@ public class IRaceDriverImpl implements IRaceDriverService {
                 temp.setUrl(((MediaContent) photo.getContent()).getUri());
             }
 
-            System.out.println("Rennfahrer:" + photo.getDescription().getPlainText());
-            System.out.println("Link:" + photo.getMediaThumbnails().get(photo.getMediaThumbnails().size() - 1).getUrl());
+            System.out.println("Wiki:" + temp.getWikiUrl());
+            System.out.println("Rennfahrer:" + temp.getName());
+            System.out.println("Link:" + temp.getUrl());
 
             list.add(temp);
 
